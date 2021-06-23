@@ -5,8 +5,8 @@ const managementSchema = new Schema({
   id: { type: String, require: true },
   firstname: { type: String, require: true },
   lastname: { type: String, require: true },
-  username: { type: Number, require: true },
-  password: { type: Number, require: true },
+  username: { type: String, require: true, index: { unique: true } },
+  password: { type: String, require: true },
   email: { type: String, require: true },
 });
 
