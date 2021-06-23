@@ -8,6 +8,6 @@ const managementSchema = new Schema({
   email: { type: String, require: true },
 });
 
-const ManagementData = mongoose.model("ManagementData", bookSchema);
+const ManagementData = mongoose.model("ManagementData", managementSchema);
 
 module.exports = ManagementData;
