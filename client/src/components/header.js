@@ -6,35 +6,29 @@ export default class Header extends Component {
       <React.Fragment>
         <header id="home">
           <nav id="nav-wrap">
-            <a className="mobile-btn" href="#nav-wrap" title="Show navigation">
-              Show navigation
-            </a>
-            <a className="mobile-btn" href="#" title="Hide navigation">
-              Hide navigation
-            </a>
             <ul id="nav" className="nav">
               <li className="current">
-                <a className="smoothscroll" href="#home">
+                <a className="smoothscroll" href="home">
                   Home
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#PMDash">
+                <a className="smoothscroll" href="PMDash">
                   PMDash
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#TenantDash">
+                <a className="smoothscroll" href="TenantDash">
                   TenantDash
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#PMCreate">
+                <a className="smoothscroll" href="PMCreate">
                   PMCreate
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#TenantCreate">
+                <a className="smoothscroll" href="TenantCreate">
                   TenantCreate
                 </a>
               </li>
