@@ -7,8 +7,8 @@ import PMDash from "./pages/PMDash";
 import TenantDash from "./pages/TenantDash";
 import PMCreate from "./pages/PMCreate";
 import TenantCreate from "./pages/TenantCreate";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/header";
+import Footer from "./components/footer";
 import "./App.css";
 
 class App extends Component {
