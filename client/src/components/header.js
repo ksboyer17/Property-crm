@@ -19,23 +19,23 @@ export default class Header extends Component {
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#about">
-                  option1
+                <a className="smoothscroll" href="#PMDash">
+                  PMDash
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#resume">
-                  option2
+                <a className="smoothscroll" href="#TenantDash">
+                  TenantDash
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#portfolio">
-                  option3
+                <a className="smoothscroll" href="#PMCreate">
+                  PMCreate
                 </a>
               </li>
               <li>
-                <a className="smoothscroll" href="#contact">
-                  option4
+                <a className="smoothscroll" href="#TenantCreate">
+                  TenantCreate
                 </a>
               </li>
             </ul>
