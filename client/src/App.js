@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //import Home from "./pages/Home";
 //import Saved from "./pages/Saved";
 import Landing from "./pages/Landing";
-import PMDash from "./pages/PMDash";
+import PMDash from "./pages/PmDash";
 import TenantDash from "./pages/TenantDash";
 import PMCreate from "./pages/PMCreate";
 import TenantCreate from "./pages/TenantCreate";
