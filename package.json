@@ -1,7 +1,7 @@
 {
-  "name": "google-books",
+  "name": "propertycrm",
   "version": "1.0.0",
-  "description": "Google Books",
+  "description": "Property CRM",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
