@@ -3,37 +3,26 @@ import React, { Component } from "react";
 class Landing extends Component {
   render() {
     return (
-      <div>
+      
       <div>
         <p>This is Landing part</p>
+      
+
+        <div className="field">
+            <label className="label" htmlFor="email">Email</label>
+            <div className="control">
+              <input className="input" name="email" type="email" placeholder="email" required onChange={this.handleChange} />
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label" htmlFor="password">Password</label>
+            <div className="control">
+              <input className="input" name="password" type="password" placeholder="password" required onChange={this.handleChange}/>
+            </div>
+          </div>
       </div>
 
-      <div className="field">
-      <p className="control">
-        <span className="select">
-          <select>
-            <option>Select User Type</option>
-            <option>Resident</option>
-            <option>Management</option>
-          </select>
-        </span>
-      </p>
-    </div>
-    
-      <div className="field">
-      <div className="control">
-        <input className="input" type="text" placeholder="Username" />
-        <input className="input" type="text" placeholder="Password" />
-      </div>
-    </div>
-    
-    
-    
-    <div className="buttons">
-      <a className="button is-link">Sign Up</a>
-      <a className="button is-link">Sign In</a>
-    </div>
-    </div>
     );
   }
 }
