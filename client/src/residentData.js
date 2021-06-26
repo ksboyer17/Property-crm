@@ -25,4 +25,4 @@ let residentData = [
   },
 ];
 
-export default residentData;
+//export default residentData;
