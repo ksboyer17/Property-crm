@@ -24,13 +24,16 @@ function PmDash() {
   }
 
   function loadManagement() {
-    API.getResident()
-      .then((res) => setManagement(res.data))
+    API.getManagement()
+      .then((res) => {
+        console.log(res);
+        setManagement(res.data);
+      })
       .catch((err) => console.log(err));
   }
 
   function deletemanagement(id) {
-    API.deleteResident(id)
+    API.deleteManagement(id)
       .then((res) => loadManagement())
       .catch((err) => console.log(err));
   }

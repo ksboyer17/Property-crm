@@ -17,7 +17,7 @@ router.post("/residentdatas", ({ body }, res) => {
     });
 });
 
-router.post("/managemendatas", ({ body }, res) => {
+router.post("/managementdatas", ({ body }, res) => {
   Management.create(body)
     .then((mamagementCreate) => {
       res.json(mamagementCreate);
@@ -28,6 +28,16 @@ router.post("/managemendatas", ({ body }, res) => {
 });
 
 router.get("/residentdatas", (req, res) => {
+  Resident.find()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+});
+
+router.get("/managementdatas", (req, res) => {
   Resident.find()
     .then((data) => {
       res.json(data);
