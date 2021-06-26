@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //import Home from "./pages/Home";
 //import Saved from "./pages/Saved";
 import Landing from "./pages/Landing";
-import PMDash from "./pages/PmDash";
+import PmDash from "./pages/PmDash";
 import TenantDash from "./pages/TenantDash";
 import PMCreate from "./pages/PMCreate";
 import TenantCreate from "./pages/TenantCreate";
@@ -19,7 +19,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/PMDash" component={PMDash} />
+            <Route exact path="/PmDash" component={PmDash} />
             <Route exact path="/TenantDash" component={TenantDash} />
             <Route exact path="/PMCreate" component={PMCreate} />
             <Route exact path="/TenantCreate" component={TenantCreate} />
