@@ -19,6 +19,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/Home" component={Landing} />
             <Route exact path="/PmDash" component={PmDash} />
             <Route exact path="/TenantDash" component={TenantDash} />
             <Route exact path="/PMCreate" component={PMCreate} />
