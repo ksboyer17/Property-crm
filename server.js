@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 //const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const routes = require("./routes");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -13,10 +14,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-//app.use(routes);
+app.use(routes);
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/propertydb";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/userdata";
 
 mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,

@@ -25,4 +25,4 @@ let managementData = [
   },
 ];
 
-export default managementData;
+//export default managementData;
