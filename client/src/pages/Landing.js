@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 class Landing extends Component {
   render() {
+    
     return (
       <div>
         <p>This is Landing part</p>
@@ -9,13 +10,14 @@ class Landing extends Component {
         <div className="field is-grouped is-grouped-centered">
           <div class="control">
             <div class="select">
-              <select>
+              <select >
                 <option>Select User Type</option>
                 <option>Resident</option>
                 <option>Property Manager</option>
               </select>
             </div>
           </div>
+
         </div>
 
         <div className="field is-grouped is-grouped-centered">
