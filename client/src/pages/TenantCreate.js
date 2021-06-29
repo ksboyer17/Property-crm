@@ -52,6 +52,20 @@ class TenantCreate extends Component {
                 </div>
               </div>
 
+              <div class="field">
+                <label class="label">Emergency Contact</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Emergency Contact" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Emergency Phone Number</label>
+                <div class="control">
+                  <input class="input" type="tel" placeholder="Emergency Phone #" />
+                </div>
+              </div>
+
               
 
               {/* <button class="button is-primary">Sign in</button> */}
