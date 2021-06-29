@@ -13,6 +13,7 @@ class PMCreate extends Component {
               <p>Support Hours and Phone Number</p>
             </div>
           </div>
+
           <div className = "column">
 
             <form className="box user-info">
@@ -35,6 +36,18 @@ class PMCreate extends Component {
                 <div class="control">
                   <input class="input" type="password" placeholder="********" />
                 </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Email Address</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="Email Address" />
+                </div>
+              </div>
+
+              <div class="dashboard-link">
+                <p>Dashboard Link</p>
+                {/* Link to PM Dashboard page */}
               </div>
 
               {/* <button class="button is-primary">Sign in</button> */}
