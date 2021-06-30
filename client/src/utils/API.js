@@ -13,6 +13,9 @@ export default {
   deleteResident: function (id) {
     return axios.delete("/api/postcontroller/residentdatas/" + id);
   },
+  postResident: function ({}) {
+    return axios.post("/api/postcontroller/residentdatas", {});
+  },
 
   // Gets all Management
   getManagement: function () {
@@ -25,6 +28,9 @@ export default {
   // Deletes the Management with the given id
   deleteManagement: function (id) {
     return axios.delete("/api/postcontroller/managementdatas/" + id);
+  },
+  postManagement: function ({}) {
+    return axios.post("/api/postcontroller/managementdatas", {});
   },
 
   // Gets all Work Order

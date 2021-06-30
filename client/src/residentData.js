@@ -6,6 +6,7 @@ module.exports = [
     username: "residenttest",
     password: "123456",
     unitnumber: "1111",
+    leasingstart: "05-01-2020",
   },
   {
     id: "2",
@@ -14,6 +15,7 @@ module.exports = [
     username: "residenttest",
     password: "123456",
     unitnumber: "2222",
+    leasingstart: "01-01-2019",
   },
   {
     id: "3",
@@ -22,6 +24,7 @@ module.exports = [
     username: "residenttest",
     password: "123456",
     unitnumber: "3333",
+    leasingstart: "09-01-2021",
   },
 ];
 

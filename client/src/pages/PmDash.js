@@ -74,6 +74,7 @@ function PmDash() {
                 <h2>Username is: {item.username}</h2>
                 <p>Resident name is: {item.firstname + item.lastname}</p>
                 <p>Resident unit number: {item.unitnumber}</p>
+                <p>Resident Leasing started on : {item.leasingstart}</p>
               </div>
             </div>
           ))}

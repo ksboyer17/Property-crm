@@ -9,6 +9,7 @@ const residentSchema = new Schema({
   username: { type: String, require: true, index: { unique: true } },
   password: { type: String, require: true },
   unitnumber: { type: Number, require: true },
+  leasingstart: { type: String, require: true },
 });
 
 residentSchema.pre("save", function (next) {
