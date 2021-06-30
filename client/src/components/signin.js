@@ -15,3 +15,5 @@ const loginFormHandler = async (event) => {
       }
     }
   };
+
+export default SignIn; 
