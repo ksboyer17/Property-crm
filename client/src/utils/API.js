@@ -42,4 +42,8 @@ export default {
   postWorkorder: function ({}) {
     return axios.post("/api/postcontroller/workorderdatas", {});
   },
+
+  loginUser: function(credentials){
+    return axios.post("/api/users", credentials)
+  }
 };
