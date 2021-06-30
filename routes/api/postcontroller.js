@@ -2,6 +2,7 @@ const router = require("express").Router();
 const postController = require("../../controllers/postController");
 const Resident = require("../../models/resident");
 const Management = require("../../models/management");
+const Workorder = require("../../models/workorder");
 
 // router.route("/").get(postController.findAll).post(postController.save);
 
@@ -27,6 +28,16 @@ router.post("/managementdatas", ({ body }, res) => {
     });
 });
 
+router.post("/workorderdatas", ({ body }, res) => {
+  Workorder.create(body)
+    .then((workorderCreate) => {
+      res.json(workorderCreate);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+});
+
 router.get("/residentdatas", (req, res) => {
   Resident.find()
     .then((data) => {
@@ -38,7 +49,7 @@ router.get("/residentdatas", (req, res) => {
 });
 
 router.get("/managementdatas", (req, res) => {
-  Resident.find()
+  Management.find()
     .then((data) => {
       res.json(data);
     })
@@ -47,4 +58,13 @@ router.get("/managementdatas", (req, res) => {
     });
 });
 
+router.get("/workorderdatas", (req, res) => {
+  Workorder.find()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+});
 module.exports = router;

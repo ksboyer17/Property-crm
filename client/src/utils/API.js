@@ -26,4 +26,20 @@ export default {
   deleteManagement: function (id) {
     return axios.delete("/api/postcontroller/managementdatas/" + id);
   },
+
+  // Gets all Work Order
+  getWorkorder: function () {
+    return axios.get("/api/postcontroller/workorderdatas");
+  },
+  // Gets the Work Order with the given id
+  getWorkorderById: function (id) {
+    return axios.get("/api/postcontroller/workorderdatas/" + id);
+  },
+  // Deletes the Work Order with the given id
+  deleteWorkorder: function (id) {
+    return axios.delete("/api/postcontroller/workorderdatas/" + id);
+  },
+  postWorkorder: function ({}) {
+    return axios.post("/api/postcontroller/workorderdatas", {});
+  },
 };

@@ -1,4 +1,4 @@
-let residentData = [
+module.exports = [
   {
     id: "1",
     firstname: "Tony",

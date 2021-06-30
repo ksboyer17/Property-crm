@@ -1,4 +1,4 @@
-let managementData = [
+module.exports = [
   {
     id: "1",
     firstname: "Steve",

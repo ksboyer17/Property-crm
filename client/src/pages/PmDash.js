@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 function PmDash() {
   const [residents, setResidents] = useState([]);
   const [management, setManagement] = useState([]);
+  const [workorder, setWorkorder] = useState([]);
 
   function loadResident() {
     API.getResident()
       .then((res) => {
-        console.log(res);
+        console.log("this is Resident: ", res);
         setResidents(res.data);
       })
       .catch((err) => console.log(err));
@@ -26,7 +27,7 @@ function PmDash() {
   function loadManagement() {
     API.getManagement()
       .then((res) => {
-        console.log(res);
+        console.log("this is management: ", res);
         setManagement(res.data);
       })
       .catch((err) => console.log(err));
@@ -38,9 +39,25 @@ function PmDash() {
       .catch((err) => console.log(err));
   }
 
+  function loadWorkorder() {
+    API.getWorkorder()
+      .then((res) => {
+        console.log("this is workorder: ", res);
+        setWorkorder(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function deleteWorkorder(id) {
+    API.deleteWorkorder(id)
+      .then((res) => loadWorkorder())
+      .catch((err) => console.log(err));
+  }
+
   useEffect(() => {
     loadResident();
     loadManagement();
+    loadWorkorder();
   }, []);
 
   return (
@@ -60,13 +77,39 @@ function PmDash() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
 
+      <div>
+        <div id="Pm-management">
           {management.map((item) => (
             <div key={item.id} className="">
               <div className="">
                 <h2>management username： {item.username}</h2>
-                <p>management name:{item.firstname + item.lastname}</p>
+                <p>
+                  management name:
+                  {item.firstname + item.lastname}
+                </p>
                 <p>management email:{item.email}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div id="Pm-workorder">
+          {workorder.map((item) => (
+            <div key={item.id} className="">
+              <div className="">
+                <p>Work order ID : {item.id}</p>
+                <h2>category： {item.category}</h2>
+                <p>
+                  resident name:
+                  {item.firstname + item.lastname}
+                </p>
+                <p>Unit number: {item.unitnumber}</p>
+                <p>Created date: {item.createdate}</p>
               </div>
             </div>
           ))}
