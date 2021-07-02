@@ -27,14 +27,13 @@ function Landing () {
         <div className="field is-grouped is-grouped-centered">
           <div class="control">
             <div class="select">
-              <select >
+              <select>
                 <option>Select User Type</option>
                 <option>Resident</option>
                 <option>Property Manager</option>
               </select>
             </div>
           </div>
-
         </div>
 
         <div className="field is-grouped is-grouped-centered">
@@ -61,6 +60,7 @@ function Landing () {
 
           <div className="control">
             <input
+              id="password-login"
               className="input"
               style={{ width: "400px" }}
               name="password"
