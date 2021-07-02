@@ -1,11 +1,7 @@
 import React, { Component, useState } from "react";
 
 class Landing extends Component {
-
-  
-
   render() {
-    
     return (
       <div>
         <p>This is Landing part</p>
@@ -13,14 +9,13 @@ class Landing extends Component {
         <div className="field is-grouped is-grouped-centered">
           <div class="control">
             <div class="select">
-              <select >
+              <select>
                 <option>Select User Type</option>
                 <option>Resident</option>
                 <option>Property Manager</option>
               </select>
             </div>
           </div>
-
         </div>
 
         <div className="field is-grouped is-grouped-centered">
@@ -34,6 +29,7 @@ class Landing extends Component {
               style={{ width: "400px" }}
               type="text"
               placeholder="Username"
+              id="username-login"
             />
           </div>
         </div>
@@ -45,6 +41,7 @@ class Landing extends Component {
 
           <div className="control">
             <input
+              id="password-login"
               className="input"
               style={{ width: "400px" }}
               name="password"
