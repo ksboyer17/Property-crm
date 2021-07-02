@@ -1,7 +1,25 @@
 import React, { Component, useState } from "react";
+import API from "../utils/API";
 
-class Landing extends Component {
-  render() {
+function Landing () {
+
+  const [credentials, setCredentials] = useState({})
+  
+  const handleInputChange = event => {
+    setCredentials({...credentials, [event.target.name]: event.target.value})
+    console.log(credentials)
+  }
+
+  const loginFormHandler = async (event) => {
+    event.preventDefault();
+    API.loginUser(credentials)
+    .then(response => {
+      // handlelogin
+    })
+  };
+
+
+    
     return (
       <div>
         <p>This is Landing part</p>
@@ -29,7 +47,8 @@ class Landing extends Component {
               style={{ width: "400px" }}
               type="text"
               placeholder="Username"
-              id="username-login"
+              name="username"
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -47,23 +66,26 @@ class Landing extends Component {
               name="password"
               type="password"
               placeholder="password"
+              onChange = {handleInputChange}
             />
           </div>
         </div>
 
         <div class="field is-grouped is-grouped-centered">
           <p class="control">
-            <button class="button is-primary" onClick={() => console.log()}>
+            <button class="button is-primary" >
               Sign Up
             </button>
           </p>
           <p class="control">
-            <button class="button is-success">Sign In</button>
+            <button class="button is-success" onClick={loginFormHandler}>
+              Sign In
+            </button>
           </p>
         </div>
       </div>
     );
-  }
+  
 }
 
 export default Landing;
