@@ -1,5 +1,9 @@
+const User = require("./User");
+const Property = require("./Property");
+const Unit = require("./Unit");
+
 module.exports = {
-  ResidentData: require("./resident"),
-  ManagementData: require("./management"),
-  WorkorderData: require("./workorder"),
+  User,
+  Property,
+  Unit,
 };

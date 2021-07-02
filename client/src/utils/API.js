@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   // Gets all Resident
   getResident: function () {
-    return axios.get("/api/postcontroller/residentdatas");
+    return axios.get("/api/postcontroller/residentdatas/");
   },
   // Gets the Resident with the given id
   getResidentById: function (id) {
@@ -13,13 +13,10 @@ export default {
   deleteResident: function (id) {
     return axios.delete("/api/postcontroller/residentdatas/" + id);
   },
-  postResident: function ({}) {
-    return axios.post("/api/postcontroller/residentdatas", {});
-  },
 
   // Gets all Management
   getManagement: function () {
-    return axios.get("/api/postcontroller/managementdatas");
+    return axios.get("/api/postcontroller/managementdatas/");
   },
   // Gets the Management with the given id
   getManagementById: function (id) {
@@ -30,7 +27,7 @@ export default {
     return axios.delete("/api/postcontroller/managementdatas/" + id);
   },
   postManagement: function ({}) {
-    return axios.post("/api/postcontroller/managementdatas", {});
+    return axios.post("/api/postcontroller/managementdatas/", {});
   },
 
   // Gets all Work Order
