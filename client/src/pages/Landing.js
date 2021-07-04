@@ -1,91 +1,99 @@
 import React, { Component, useState } from "react";
 import API from "../utils/API";
 
-function Landing () {
+function Landing() {
+  const [credentials, setCredentials] = useState({});
 
-  const [credentials, setCredentials] = useState({})
-  
-  const handleInputChange = event => {
-    setCredentials({...credentials, [event.target.name]: event.target.value})
-    console.log(credentials)
-  }
+  const handleInputChange = (event) => {
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+    console.log(credentials);
+  };
 
   const loginFormHandler = async (event) => {
     event.preventDefault();
-    API.loginUser(credentials)
-    .then(response => {
-      // handlelogin
-    })
+    const email = document.querySelector("#email-login").value.trim();
+    const password = document.querySelector("#password-login").value.trim();
+
+    if (email && password) {
+      // Send a POST request to the API endpoint
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        // If successful, redirect the browser to the profile page
+        document.location.replace("/PmDash");
+      } else {
+        alert(response.statusText);
+      }
+    }
   };
 
+  const signinPageHandler = (event) => {
+    event.preventDefault();
+    document.location.replace("/PMCreate");
+  };
 
-    
-    return (
-      <div>
-        <p>This is Landing part</p>
+  return (
+    <div>
+      <p>This is Landing part</p>
 
-        <div className="field is-grouped is-grouped-centered">
-          <div class="control">
-            <div class="select">
-              <select>
-                <option>Select User Type</option>
-                <option>Resident</option>
-                <option>Property Manager</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <div className="field is-grouped is-grouped-centered">
+        <h1>Log in</h1>
+      </div>
 
-        <div className="field is-grouped is-grouped-centered">
-          <label className="label" htmlFor="username">
-            Username
-          </label>
+      <div className="field is-grouped is-grouped-centered">
+        <label className="label" htmlFor="email-login">
+          Email
+        </label>
 
-          <div className="control">
-            <input
-              className="input"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="Username"
-              name="username"
-              onChange={handleInputChange}
-            />
-          </div>
-        </div>
-
-        <div className="field is-grouped is-grouped-centered">
-          <label className="label" htmlFor="password">
-            Password
-          </label>
-
-          <div className="control">
-            <input
-              id="password-login"
-              className="input"
-              style={{ width: "400px" }}
-              name="password"
-              type="password"
-              placeholder="password"
-              onChange = {handleInputChange}
-            />
-          </div>
-        </div>
-
-        <div class="field is-grouped is-grouped-centered">
-          <p class="control">
-            <button class="button is-primary" >
-              Sign Up
-            </button>
-          </p>
-          <p class="control">
-            <button class="button is-success" onClick={loginFormHandler}>
-              Sign In
-            </button>
-          </p>
+        <div className="control">
+          <input
+            className="input"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="Email address"
+            name="email-login"
+            id="email-login"
+            onChange={handleInputChange}
+          />
         </div>
       </div>
-    );
-  
+
+      <div className="field is-grouped is-grouped-centered">
+        <label className="label" htmlFor="password">
+          Password
+        </label>
+
+        <div className="control">
+          <input
+            id="password-login"
+            className="input"
+            style={{ width: "400px" }}
+            name="password-login"
+            type="password"
+            placeholder="password"
+            onChange={handleInputChange}
+          />
+        </div>
+      </div>
+
+      <div class="field is-grouped is-grouped-centered">
+        <p class="control">
+          <button class="button is-success" onClick={signinPageHandler}>
+            Sign Up
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-success" onClick={loginFormHandler}>
+            Sign In
+          </button>
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default Landing;
