@@ -60,6 +60,19 @@ function PmDash() {
     loadWorkorder();
   }, []);
 
+  const logout = async () => {
+    const response = await fetch("/api/auth/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      document.location.replace("/");
+    } else {
+      alert(response.statusText);
+    }
+  };
+
   return (
     <section id="PmDash">
       <div className="">
@@ -80,6 +93,10 @@ function PmDash() {
           ))}
         </div>
       </div>
+
+      <button id="logout" onClick={logout}>
+        Logout
+      </button>
 
       <div>
         <div id="Pm-management">

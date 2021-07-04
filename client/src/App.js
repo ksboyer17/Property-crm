@@ -21,11 +21,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/Home" component={Landing} />
             <Route exact path="/PmDash" component={PmDash} />
-            <Route exact path="/TenantDash" component={TenantDash} />
             <Route exact path="/PMCreate" component={PMCreate} />
-            <Route exact path="/TenantCreate" component={TenantCreate} />
-            {/* <Route exact path="/" component={Home} />
-          <Route exact path="/saved" component={Saved} /> */}
           </Switch>
         </div>
         <Footer />
