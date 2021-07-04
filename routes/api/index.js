@@ -5,6 +5,7 @@ const unitRoutes = require("./unitRoutes");
 
 router.use("/auth", userRoutes); // -> POST / (signup), POST /login (login), POST /logout (logout)
 router.use("/properties", propertyRoutes);
-router.use("/properties/:propertyId/units", unitRoutes);
+//took out :propertyID/units
+router.use("/units", unitRoutes);
 
 module.exports = router;
