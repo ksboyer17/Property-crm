@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-// import "../style/header.css"; 
 export default class Header extends Component {
   render() {
     //let residentData = this.props.residentData;
     return (
       <React.Fragment>
-        <header className="home navbar is-spaced is-black">
+        <header className="home navbar is-spaced is-success is-transparent">
         
           <nav id="nav-wrap" className= "navbar-menu">
             <ul id="nav" className="navbar-start">
