@@ -5,37 +5,46 @@ export default class Header extends Component {
     //let residentData = this.props.residentData;
     return (
       <React.Fragment>
-        <header id="home navbar is-fixed-top is-spaced ">
-        <h1>Welcome to Property-CRM!</h1>
+        <header className="home navbar is-spaced is-black">
+        
           <nav id="nav-wrap" className= "navbar-menu">
             <ul id="nav" className="navbar-start">
+            <h1>Property-CRM!</h1>
               <li className="current">
-                
-                <a className="smoothscroll navbar-item" href="home">
-                <i class="fas fa-home"></i>
+                <a className="smoothscroll navbar-item has-text-white" href="home">
+                  <i class="fas fa-home"></i>
                   Home
                 </a>
               </li>
+
+              {/* to be deleted */}
               <li>
-                <a className="smoothscroll navbar-item" href="PMDash">
+                <a className="smoothscroll navbar-item has-text-white" href="PMDash">
                   PMDash
                 </a>
-              </li>
+              </li> 
+
+              {/* to be deleted */}
               <li>
-                <a className="smoothscroll navbar-item" href="TenantDash">
+                <a className="smoothscroll navbar-item has-text-white" href="TenantDash">
                   TenantDash
                 </a>
               </li>
+
+              {/* to be deleted */}
               <li>
-                <a className="smoothscroll navbar-item" href="PMCreate">
+                <a className="smoothscroll navbar-item has-text-white" href="PMCreate">
                   PMCreate
                 </a>
               </li>
+              
+              {/* to be deleted */}
               <li>
-                <a className="smoothscroll navbar-item" href="TenantCreate">
+                <a className="smoothscroll navbar-item has-text-white" href="TenantCreate">
                   TenantCreate
                 </a>
               </li>
+
             </ul>
           </nav>
         </header>
