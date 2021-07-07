@@ -1,0 +1,21 @@
+
+.current {
+    display: table;   
+	margin: 0 auto;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    display: inline; 
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
+    height: 50px;
+    float: left; 
+}
