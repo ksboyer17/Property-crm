@@ -41,13 +41,13 @@ function Landing() {
       <p>This is Landing part</p>
 
       <div className="field is-grouped is-grouped-centered">
-        <h1>Log in</h1>
+        <h1>Sign Up or Log in</h1>
       </div>
 
       <div className="field is-grouped is-grouped-centered">
         <label className="label" htmlFor="email-login">
           Email
-        </label>
+        
 
         <div className="control">
           <input
@@ -60,12 +60,13 @@ function Landing() {
             onChange={handleInputChange}
           />
         </div>
+        </label>
       </div>
 
       <div className="field is-grouped is-grouped-centered">
         <label className="label" htmlFor="password">
           Password
-        </label>
+        
 
         <div className="control">
           <input
@@ -78,6 +79,7 @@ function Landing() {
             onChange={handleInputChange}
           />
         </div>
+        </label>
       </div>
 
       <div class="field is-grouped is-grouped-centered">
