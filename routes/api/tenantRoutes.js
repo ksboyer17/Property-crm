@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const { Unit, User } = require("../../models");
+const { Tenant, User } = require("../../models");
 
 // get a list of properties (that belong to the currently logged in user)
 router.get("/", async (req, res) => {
   try {
     // get the currently logged in user
-    const unit = await Unit.find().populate("units");
+    const tenant = await Tenant.find().populate("units");
 
     // return the properties
-    res.status(200).json(unit);
+    res.status(200).json(tenant);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -20,10 +20,10 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // get the property by it's id
-    const unit = await Unit.findOne({ _id: id });
+    const tenant = await Tenant.findOne({ _id: id });
 
     // return the property
-    res.status(200).json(unit);
+    res.status(200).json(tenant);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -35,14 +35,14 @@ router.post("/:id", async (req, res) => {
   const { user_id } = req.session;
   try {
     // create a new property and save it to the database
-    const unit = new Unit(req.body);
-    const unitData = await unit.save();
+    const tenant = new Tenant(req.body);
+    const tenantData = await tenant.save();
 
     // get the currently logged in user
     const user = await User.findOne({ _id: user_id });
 
     // update the list of the user's properties to include the newly created one
-    user.unit = [...user.unit, unitData._id];
+    user.tenant = [...user.unit, tenantData._id];
 
     // save the updatedUser to the database
     const updatedUser = await user.save();

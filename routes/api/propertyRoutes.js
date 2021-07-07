@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
 
     console.log(updatedUser);
 
-    res.status(200).json("hi there");
+    res.status(200).json(updatedUser);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
