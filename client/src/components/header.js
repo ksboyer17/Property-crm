@@ -10,11 +10,11 @@ export default class Header extends Component {
           <nav id="nav-wrap" className= "navbar-menu">
             <ul id="nav" className="navbar-start">
               <li className="current">
-                <span className= "icon-text">
+                
                 <a className="smoothscroll navbar-item" href="home">
+                <i class="fas fa-home"></i>
                   Home
                 </a>
-                </span>
               </li>
               <li>
                 <a className="smoothscroll navbar-item" href="PMDash">
