@@ -6,11 +6,11 @@ export default {
     return axios.get("/api/properties/");
   },
   // Gets one property
-  getPropertiesById: function () {
+  getPropertiesById: function (id) {
     return axios.get("/api/properties/" + id);
   },
   // Deletes
-  deleteProperties: function () {
+  deleteProperties: function (id) {
     return axios.delete("/api/properties/" + id);
   },
   // create
@@ -18,36 +18,36 @@ export default {
     return axios.post("/api/properties/", {});
   },
 
-  // Gets all Management
-  getManagement: function () {
-    return axios.get("/api/postcontroller/managementdatas/");
+  getUnit: function () {
+    return axios.get("/api/units/");
   },
-  // Gets the Management with the given id
-  getManagementById: function (id) {
-    return axios.get("/api/postcontroller/managementdatas/" + id);
+  // Gets one property
+  getUnitById: function (id) {
+    return axios.get("/api/units/" + id);
   },
-  // Deletes the Management with the given id
-  deleteManagement: function (id) {
-    return axios.delete("/api/postcontroller/managementdatas/" + id);
+  // Deletes
+  deleteUnit: function (id) {
+    return axios.delete("/api/units/" + id);
   },
-  postManagement: function ({}) {
-    return axios.post("/api/postcontroller/managementdatas/", {});
+  // create
+  postUnit: function ({}) {
+    return axios.post("/api/units/", {});
   },
 
-  // Gets all Work Order
-  getWorkorder: function () {
-    return axios.get("/api/postcontroller/workorderdatas");
+  getTenant: function () {
+    return axios.get("/api/tenants/");
   },
-  // Gets the Work Order with the given id
-  getWorkorderById: function (id) {
-    return axios.get("/api/postcontroller/workorderdatas/" + id);
+  // Gets one property
+  getTenantById: function (id) {
+    return axios.get("/api/tenants/" + id);
   },
-  // Deletes the Work Order with the given id
-  deleteWorkorder: function (id) {
-    return axios.delete("/api/postcontroller/workorderdatas/" + id);
+  // Deletes
+  deleteTenant: function (id) {
+    return axios.delete("/api/tenants/" + id);
   },
-  postWorkorder: function ({}) {
-    return axios.post("/api/postcontroller/workorderdatas", {});
+  // create
+  postTenant: function ({}) {
+    return axios.post("/api/tenants/", {});
   },
 
   loginUser: function (credentials) {
