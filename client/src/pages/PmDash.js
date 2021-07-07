@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
-import residentData from "../residentData";
-import managementData from "../managementData";
+// import residentData from "../residentData";
+// import managementData from "../managementData";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 

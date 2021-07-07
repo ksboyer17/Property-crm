@@ -3,13 +3,14 @@ const { Property, User } = require("../../models");
 
 // get a list of properties (that belong to the currently logged in user)
 router.get("/", async (req, res) => {
-  const { user_id } = req.session;
+  //const { user_id } = req.session;
   try {
     // get the currently logged in user
-    const user = await User.findOne({ _id: user_id }).populate("properties");
+    const property = await Property.find().populate("properties");
 
     // return the properties
-    res.status(200).json(user.properties);
+    console.log(property);
+    res.status(200).json(property);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);

@@ -1,17 +1,21 @@
 import axios from "axios";
 
 export default {
-  // Gets all Resident
-  getResident: function () {
-    return axios.get("/api/postcontroller/residentdatas/");
+  // Gets all properties
+  getProperties: function () {
+    return axios.get("/api/properties/");
   },
-  // Gets the Resident with the given id
-  getResidentById: function (id) {
-    return axios.get("/api/postcontroller/residentdatas/" + id);
+  // Gets one property
+  getPropertiesById: function () {
+    return axios.get("/api/properties/" + id);
   },
-  // Deletes the Resident with the given id
-  deleteResident: function (id) {
-    return axios.delete("/api/postcontroller/residentdatas/" + id);
+  // Deletes
+  deleteProperties: function () {
+    return axios.delete("/api/properties/" + id);
+  },
+  // create
+  postProperties: function ({}) {
+    return axios.post("/api/properties/", {});
   },
 
   // Gets all Management

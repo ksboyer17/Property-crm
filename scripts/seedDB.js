@@ -1,19 +1,19 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-const residentData = require("../client/src/residentData");
-const managementData = require("../client/src/managementData");
-const workorderData = require("../client/src/workorderData");
+const TenantData = require("../client/src/tenantData");
+const UnitData = require("../client/src/unitData");
+const PropertyData = require("../client/src/propertyData");
 
 // This file empties the Books collection and inserts the books below
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdata");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/propertydb");
 
-const residentSeed = residentData;
-const managementSeed = managementData;
-const workorderSeed = workorderData;
+const tenantSeed = TenantData;
+const unitSeed = UnitData;
+const propertySeed = PropertyData;
 
-db.ResidentData.remove({})
-  .then(() => db.ResidentData.collection.insertMany(residentSeed))
+db.Tenant.remove({})
+  .then(() => db.Tenant.collection.insertMany(tenantSeed))
   .then((data) => {
     console.log(data.result.n + " Residents records inserted!");
     process.exit(0);
@@ -23,8 +23,8 @@ db.ResidentData.remove({})
     process.exit(1);
   });
 
-db.ManagementData.remove({})
-  .then(() => db.ManagementData.collection.insertMany(managementSeed))
+db.Unit.remove({})
+  .then(() => db.Unit.collection.insertMany(unitSeed))
   .then((data) => {
     console.log(data.result.n + " Management records inserted!");
     process.exit(0);
@@ -34,8 +34,8 @@ db.ManagementData.remove({})
     process.exit(1);
   });
 
-db.WorkorderData.remove({})
-  .then(() => db.WorkorderData.collection.insertMany(workorderSeed))
+db.Property.remove({})
+  .then(() => db.Property.collection.insertMany(propertySeed))
   .then((data) => {
     console.log(data.result.n + " work order records inserted!");
     process.exit(0);
