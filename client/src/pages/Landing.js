@@ -67,7 +67,7 @@ function Landing() {
                 style={{ width: "400px" }}
                 name="password-login"
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 onChange={handleInputChange}
               />
             </div>

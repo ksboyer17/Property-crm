@@ -35,10 +35,16 @@ img {
 
 .input {
   background-color: black;
+  color: #d7be69 !important;
 }
+
 #userInput {
   margin-top: 10% !important;
   padding: 1.5rem;
+}
+
+.lablel {
+  color: #d7be69; 
 }
 
 ::placeholder {
@@ -61,3 +67,47 @@ img {
   background-image: url("./assets/background.png");
   background-size: cover;
 } */
+
+
+.footer {
+  background-image: url("./assets/Nav-background.png");
+  background-size: cover;
+  color: #d7be69 !important;
+  padding: 0px; 
+  position: absolute; 
+  bottom: 0px; 
+  width: 100%; 
+}
+
+.social a {
+  line-height: 40%;
+  padding: 0px; 
+  margin: 0px; 
+  width: 10%; 
+  height: 10%; 
+}
+
+.contributors li {
+  display: inline-block;
+  padding: .5rem;  
+}
+
+.footer-left{
+
+  border: 1px solid ;
+  border: 1px solid ;
+  padding: 0px;
+  margin-left: 0px;
+  display: inline-block;
+  justify-content: center !important;
+  align-items: center !important;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+}
+
+i {
+  background-color: black;
+  color: #d7be69;
+}
