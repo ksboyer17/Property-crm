@@ -27,16 +27,18 @@ img {
 }
 
 #Landteg {
-  color: #9b1b0a !important;
+  color: #d7be69 !important;
   font-weight: bold;
-  font-size: 3.5rem;
+  font-size: 3.25rem;
+  margin-top: 3rem;
 }
 
 .input {
   background-color: black;
 }
 #userInput {
-  margin-top: 25% !important;
+  margin-top: 10% !important;
+  padding: 1.5rem;
 }
 
 ::placeholder {
@@ -46,6 +48,12 @@ img {
 .button {
   background-color: gold !important;
   color: black !important;
+  width: 12rem;
+}
+
+.button:hover {
+  transition: transform 1s ease;
+  transform: scale(1.05);
 }
 
 /* #logincss,
