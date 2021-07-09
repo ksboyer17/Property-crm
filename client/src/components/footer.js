@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../assets/css/footer.css"; 
+
 function Footer() {
   
     //let residentData = this.props.residentData;
@@ -15,7 +15,7 @@ function Footer() {
               <a href="#" ><i class="fab fa-facebook-square fa-3x"></i></a>
               <a href="#" ><i class="fab fa-linkedin fa-3x"></i></a>
               <a href="#" ><i class="fab fa-github-square fa-3x"></i></a>
-              <a href="#"><i class="fab fa-twitch fa-3x"></i></a>
+              <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
             </div>
         </div>
             <p class="copyright">Bleecker Street © 2021</p>
