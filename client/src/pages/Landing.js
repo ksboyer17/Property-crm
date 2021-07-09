@@ -38,15 +38,12 @@ function Landing() {
 
   return (
     <div>
-      <p>This is Landing part</p>
-
       <div className="field is-grouped is-grouped-centered" id="Landteg">
-        <h1>Sign Up or Log in</h1>
+        <h1>Bleecker Street Apartments</h1>
       </div>
       <div id="userInput">
         <div className="field is-grouped is-grouped-centered">
           <label className="label" htmlFor="email-login">
-            Email
             <div className="control">
               <input
                 className="input"
@@ -63,7 +60,6 @@ function Landing() {
 
         <div className="field is-grouped is-grouped-centered">
           <label className="label" htmlFor="password">
-            Password
             <div className="control">
               <input
                 id="password-login"
