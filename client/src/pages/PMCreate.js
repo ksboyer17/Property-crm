@@ -29,7 +29,7 @@ function SignupPage() {
   };
 
   return (
-    <div>
+    <div class="logincss" id="logincss">
       <p>This is PMCreate part</p>
       <div className="columns">
         {" "}
