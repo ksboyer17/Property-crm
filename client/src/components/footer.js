@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../assets/css/footer.css"; 
 function Footer() {
   
     //let residentData = this.props.residentData;
@@ -9,10 +10,10 @@ function Footer() {
             <i className="icon-up-open" />
           </a>
         </div> */}
-        <div className="social columns">
-          <a href="#" class="column"><i class="fab fa-facebook-square fa-3x fa-fw"></i></a>
-          <a href="#" class="column"><i class="fab fa-linkedin fa-3x"></i></a></div>
-          <a href="#" class="column"><i class="fab fa-github-square fa-3x"></i></a>
+        <div className="social ">
+          <a href="#" ><i class="fab fa-facebook-square fa-3x fa-fw"></i></a>
+          <a href="#" ><i class="fab fa-linkedin fa-3x"></i></a></div>
+          <a href="#" ><i class="fab fa-github-square fa-3x"></i></a>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
                 {/* <li class="list-inline-item"><a href="#">Services</a></li>
@@ -20,7 +21,7 @@ function Footer() {
                 <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li> */}
             </ul>
-            <p class="copyright">Property-CRM © 2021</p>
+            <p class="copyright">Bleecker Street © 2021</p>
             <ul class="contributors"></ul>
                 <li>Dwayne Piao</li>
                 <li>Taylor Leong</li>

@@ -7,7 +7,7 @@ export default class Header extends Component {
         <header className="home navbar is-spaced is-success is-transparent">
           <nav id="nav-wrap" className="navbar-menu">
             <ul id="nav" className="navbar-start">
-              <img src="../assets/homeicon.jpg" alt="logo"></img>
+              
               <h1>Bleecker Street Residence</h1>
               <li className="current">
                 <a
