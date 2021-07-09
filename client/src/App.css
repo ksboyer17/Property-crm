@@ -35,8 +35,13 @@ img {
 .input {
   background-color: black;
 }
+
 #userInput {
   margin-top: 25% !important;
+}
+
+.lablel {
+  color: #d7be69; 
 }
 
 ::placeholder {
@@ -54,10 +59,15 @@ img {
   background-size: cover;
 } */
 
+
 .footer {
   background-image: url("./assets/Nav-background.png");
   background-size: cover;
   color: #d7be69 !important;
+  padding: 0px; 
+  position: absolute; 
+  bottom: 0px; 
+  width: 100%; 
 }
 
 .social a {
@@ -73,17 +83,22 @@ img {
   padding: .5rem;  
 }
 
-i {
+.footer-left{
+
   border: 1px solid ;
   border: 1px solid ;
   padding: 0px;
-  margin: 0px;
+  /* margin-left: 0px; */
   display: inline-block;
-  justify-content: center;
+  justify-content: center !important;
+  align-items: center !important;
   width: auto;
   height: auto;
   line-height: inherit;
   vertical-align: baseline;
+}
+
+i {
   background-color: black;
-  color:gold;
+  color: #d7be69;
 }
