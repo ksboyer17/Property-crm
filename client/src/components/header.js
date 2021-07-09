@@ -7,10 +7,9 @@ export default class Header extends Component {
     return (
       <React.Fragment>
         <header className="home navbar is-spaced is-success is-transparent">
-          <nav id="nav-wrap" className="navbar-menu">
-            <ul id="nav" className="navbar-start">
-              <img src={logo} alt="logo"></img>
-              <h1>Bleecker Street Residence</h1>
+          <img src={logo} alt="logo" id="logoimg"></img>
+          <nav id="nav-wrap" className="navbar-menu ">
+            <ul id="nav" className="navbar-end ">
               <li className="current">
                 <a className="smoothscroll navbar-item nav-text" href="home">
                   <i class="fas fa-home home-icon"></i>
