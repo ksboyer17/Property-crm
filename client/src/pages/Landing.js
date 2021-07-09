@@ -40,46 +40,43 @@ function Landing() {
     <div>
       <p>This is Landing part</p>
 
-      <div className="field is-grouped is-grouped-centered">
+      <div className="field is-grouped is-grouped-centered" id="Landteg">
         <h1>Sign Up or Log in</h1>
       </div>
-
-      <div className="field is-grouped is-grouped-centered">
-        <label className="label" htmlFor="email-login">
-          Email
-        
-
-        <div className="control">
-          <input
-            className="input"
-            style={{ width: "400px" }}
-            type="text"
-            placeholder="Email address"
-            name="email-login"
-            id="email-login"
-            onChange={handleInputChange}
-          />
+      <div id="userInput">
+        <div className="field is-grouped is-grouped-centered">
+          <label className="label" htmlFor="email-login">
+            Email
+            <div className="control">
+              <input
+                className="input"
+                style={{ width: "400px" }}
+                type="text"
+                placeholder="Email address"
+                name="email-login"
+                id="email-login"
+                onChange={handleInputChange}
+              />
+            </div>
+          </label>
         </div>
-        </label>
-      </div>
 
-      <div className="field is-grouped is-grouped-centered">
-        <label className="label" htmlFor="password">
-          Password
-        
-
-        <div className="control">
-          <input
-            id="password-login"
-            className="input"
-            style={{ width: "400px" }}
-            name="password-login"
-            type="password"
-            placeholder="password"
-            onChange={handleInputChange}
-          />
+        <div className="field is-grouped is-grouped-centered">
+          <label className="label" htmlFor="password">
+            Password
+            <div className="control">
+              <input
+                id="password-login"
+                className="input"
+                style={{ width: "400px" }}
+                name="password-login"
+                type="password"
+                placeholder="password"
+                onChange={handleInputChange}
+              />
+            </div>
+          </label>
         </div>
-        </label>
       </div>
 
       <div class="field is-grouped is-grouped-centered">

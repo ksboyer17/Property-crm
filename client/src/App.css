@@ -1,1 +1,55 @@
+body {
+  background-image: url("./assets/background.png");
+  background-size: cover;
+  height: 100%;
+}
 
+html {
+  height: 100%;
+}
+
+.box.prop-info {
+  font-size: 20px;
+}
+
+.home,
+.home-icon,
+.nav-text,
+.navbar-item {
+  background-image: url("./assets/Nav-background.png");
+  background-size: cover;
+  color: #d7be69 !important;
+}
+
+img {
+  width: 5rem;
+  height: 3.5rem;
+}
+
+#Landteg {
+  color: #9b1b0a !important;
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+.input {
+  background-color: black;
+}
+#userInput {
+  margin-top: 25% !important;
+}
+
+::placeholder {
+  color: #d7be69 !important;
+}
+
+.button {
+  background-color: gold !important;
+  color: black !important;
+}
+
+/* #logincss,
+.logincss {
+  background-image: url("./assets/background.png");
+  background-size: cover;
+} */

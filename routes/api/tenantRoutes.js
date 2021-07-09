@@ -5,9 +5,10 @@ const { Tenant, User } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     // get the currently logged in user
-    const tenant = await Tenant.find().populate("units");
+    const tenant = await Tenant.find().populate("tenants");
 
     // return the properties
+    console.log(tenant);
     res.status(200).json(tenant);
   } catch (err) {
     console.log(err);

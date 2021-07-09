@@ -10,23 +10,22 @@ function Footer() {
             <i className="icon-up-open" />
           </a>
         </div> */}
-        <div className="social ">
-          <a href="#" ><i class="fab fa-facebook-square fa-3x fa-fw"></i></a>
-          <a href="#" ><i class="fab fa-linkedin fa-3x"></i></a></div>
-          <a href="#" ><i class="fab fa-github-square fa-3x"></i></a>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                {/* <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li> */}
-            </ul>
+        <div className= "footer-left">
+            <div className="social">
+              <a href="#" ><i class="fab fa-facebook-square fa-3x"></i></a>
+              <a href="#" ><i class="fab fa-linkedin fa-3x"></i></a>
+              <a href="#" ><i class="fab fa-github-square fa-3x"></i></a>
+              <a href="#"><i class="fab fa-twitch fa-3x"></i></a>
+            </div>
+        </div>
             <p class="copyright">Bleecker Street © 2021</p>
-            <ul class="contributors"></ul>
+            <ul class="contributors">
+                <li>Contributors:</li>
                 <li>Dwayne Piao</li>
                 <li>Taylor Leong</li>
                 <li>Louis Falla</li>
                 <li>Kenneth Boyer </li>
+            </ul>
       </footer>
     );
   
