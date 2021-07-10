@@ -44,7 +44,7 @@ img {
 }
 
 .lablel {
-  color: #d7be69; 
+  color: #d7be69;
 }
 
 ::placeholder {
@@ -68,34 +68,39 @@ img {
   background-size: cover;
 } */
 
-
 .footer {
   background-image: url("./assets/Nav-background.png");
   background-size: cover;
   color: #d7be69 !important;
-  padding: 0px; 
-  position: absolute; 
-  bottom: 0px; 
-  width: 100%; 
+  padding: 0px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.social,
+.fab {
+  padding: 0.5rem;
+  background: none;
 }
 
 .social a {
   line-height: 40%;
-  padding: 0px; 
-  margin: 0px; 
-  width: 10%; 
-  height: 10%; 
+  padding: 0px;
+  margin: 0px;
+  width: 10%;
+  height: 10%;
 }
 
 .contributors li {
   display: inline-block;
-  padding: .5rem;  
+  padding: 0.5rem;
 }
 
-.footer-left{
-
-  border: 1px solid ;
-  border: 1px solid ;
+.footer-left {
+  border: 1px solid;
+  border: 1px solid;
   padding: 0px;
   margin-left: 0px;
   display: inline-block;
