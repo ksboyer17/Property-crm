@@ -39,18 +39,9 @@ router.post("/", async (req, res) => {
     const tenant = new Tenant(req.body);
     const tenantData = await tenant.save();
 
-    // get the currently logged in user
-    const user = await User.findOne({ _id: user_id });
+    console.log(tenantData);
 
-    // update the list of the user's properties to include the newly created one
-    user.tenant = [...user.unit, tenantData._id];
-
-    // save the updatedUser to the database
-    const updatedUser = await user.save();
-
-    console.log(updatedUser);
-
-    res.status(200).json(updatedUser);
+    res.status(200).json(tenantData);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -71,12 +62,12 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// delete a property
+// delete a
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { _id } = req.params;
   try {
-    // delete the property by its id
-    await Tenant.deleteOne({ id: id });
+    // delete by its id
+    await Tenant.deleteOne({ id: _id });
 
     res.status(204).end();
   } catch (err) {

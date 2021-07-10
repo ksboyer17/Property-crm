@@ -80,10 +80,10 @@ router.put("/:id", async (req, res) => {
 
 // delete a property
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { _id } = req.params;
   try {
     // delete the property by its id
-    await Property.deleteOne({ id: id });
+    await Property.deleteOne({ id: _id });
 
     res.status(204).end();
   } catch (err) {
