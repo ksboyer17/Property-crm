@@ -40,10 +40,10 @@ img {
 }
 
 #Landteg {
-  color: #d7be69 !important;
+  color: gold !important;
   font-weight: bold;
   font-size: 3.25rem;
-  margin-top: 3rem;
+  margin-top: 6.5rem;
 }
 
 .input {
@@ -54,6 +54,7 @@ img {
 #userInput {
   margin-top: 10% !important;
   padding: 1.5rem;
+  padding-top: 0; 
 }
 
 .lablel {
