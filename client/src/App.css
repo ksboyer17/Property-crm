@@ -116,3 +116,28 @@ i {
   background-color: black;
   color: #d7be69;
 }
+
+/*pm-section*/
+
+.data-box {
+  color: white;
+  width: auto;
+  padding: auto;
+  position: relative;
+  background-image: url("./assets/Nav-background.png");
+  opacity: 0.7;
+  text-align: center;
+  justify-items: center;
+  display: inline-table;
+  border-radius: 20px;
+  margin: 1rem;
+}
+
+#Pm-properties {
+  margin: 1rem;
+}
+
+#logout {
+  position: absolute;
+  margin-right: 0px !important;
+}

@@ -20,7 +20,10 @@ function PmDash() {
 
   function deleteProperties(id) {
     API.deleteProperties(id)
-      .then((res) => loadProperites())
+      .then((res) => {
+        console.log("Property deleted");
+        loadProperites();
+      })
       .catch((err) => console.log(err));
   }
 
@@ -34,7 +37,7 @@ function PmDash() {
   }
 
   function deleteUnit(id) {
-    API.deleteManagement(id)
+    API.deleteUnit(id)
       .then((res) => loadUnits())
       .catch((err) => console.log(err));
   }
@@ -48,8 +51,8 @@ function PmDash() {
       .catch((err) => console.log(err));
   }
 
-  function deleteTenants(id) {
-    API.deleteTenants(id)
+  function deleteTenant(id) {
+    API.deleteTenant(id)
       .then((res) => loadTenants())
       .catch((err) => console.log(err));
   }
@@ -89,67 +92,79 @@ function PmDash() {
 
   return (
     <section id="PmDash">
-      <div className="">
-        <h1>This is PmDash part， resident list</h1>
-        <div
-          id="Pm-properties"
-          className="" //add style class here
-        >
-          {properties.map((item) => (
-            <div key={item.id} className="">
-              <div className="">
-                <h2>Properites address is: {item.address}</h2>
-                <p>Properites City is: {item.city}</p>
-                <p>State: {item.state}</p>
-                <p>zip : {item.zip}</p>
-                <p>Total unit : {item.units.length}</p>
+      <div>
+        <div className="data-box" id="Pm-properties">
+          <h1>Properites List</h1>
+          <div
+            className="properties-data" //add style class here
+          >
+            {properties.map((item) => (
+              <div key={item.id} className="">
+                <div className="">
+                  <h2>Properites address is: {item.address}</h2>
+                  <p>Properites City is: {item.city}</p>
+                  <p>State: {item.state}</p>
+                  <p>zip : {item.zip}</p>
+                </div>
+                {/* <button
+                  id="deleteProperties"
+                  onClick={deleteProperties(item.id)}
+                >
+                  Remove Properites
+                </button> */}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="">
-        <h1>This is PmDash part， unit list</h1>
-        <div
-          id="Pm-unit"
-          className="" //add style class here
-        >
-          {units.map((item) => (
-            <div key={item.id} className="">
-              <div className="">
-                <h2>Unit number is: {item.number}</h2>
-                <p>unit rent is: {item.rent}</p>
-                <p>rent due date is : {item.rentDue}</p>
+        <div className="data-box">
+          <h1>This is PmDash part， unit list</h1>
+          <div
+            id="Pm-unit"
+            className="" //add style class here
+          >
+            {units.map((item) => (
+              <div key={item.id} className="">
+                <div className="">
+                  <h2>Unit number is: {item.number}</h2>
+                  <p>unit rent is: {item.rent}</p>
+                  <p>rent due date is : {item.rentDue}</p>
+                </div>
+                {/* <button id="deleteUnit" onClick={deleteUnit(item.id)}>
+                  Remove Unit
+                </button> */}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="">
-        <h1>This is PmDash part， tenant list</h1>
-        <div
-          id="Pm-tenants"
-          className="" //add style class here
-        >
-          {tenants.map((item) => (
-            <div key={item.id} className="">
-              <div className="">
-                <h2>Resident firstname is: {item.firstName}</h2>
-                <p>Resident lastname is: {item.lastName}</p>
-                <p>Resident phone is: {item.phone}</p>
-                <p>Resident lease starts Date: {item.leaseDate}</p>
-                <p>Resident Duration: {item.leaseDuration} year/years</p>
+        <div className="data-box">
+          <h1>This is PmDash part， tenant list</h1>
+          <div
+            id="Pm-tenants"
+            className="" //add style class here
+          >
+            {tenants.map((item) => (
+              <div key={item.id} className="">
+                <div className="">
+                  <h2>Resident firstname is: {item.firstName}</h2>
+                  <p>Resident lastname is: {item.lastName}</p>
+                  <p>Resident phone is: {item.phone}</p>
+                  <p>Resident lease starts Date: {item.leaseDate}</p>
+                  <p>Resident Duration: {item.leaseDuration} year/s</p>
+                </div>
+                {/* <button id="deleteTenant" onClick={deleteTenant(item.id)}>
+                  Remove Resident
+                </button> */}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <button id="logout" onClick={logout}>
-        Logout
-      </button>
+        <button id="logout" onClick={logout}>
+          Logout
+        </button>
+      </div>
     </section>
   );
 }
