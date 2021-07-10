@@ -106,12 +106,15 @@ function PmDash() {
                   <p>State: {item.state}</p>
                   <p>Zip Code : {item.zip}</p>
                 </div>
-                {/* <button
+                <button
                   id="deleteProperties"
-                  onClick={deleteProperties(item.id)}
+                  type="submit"
+                  onClick={() => {
+                    deleteProperties(item.id);
+                  }}
                 >
                   Remove Properites
-                </button> */}
+                </button>
               </div>
             ))}
           </div>
@@ -130,9 +133,15 @@ function PmDash() {
                   <p>Unit Rent is: {item.rent}</p>
                   <p>Rent Due Date is : {item.rentDue}</p>
                 </div>
-                {/* <button id="deleteUnit" onClick={deleteUnit(item.id)}>
+                <button
+                  id="deleteUnit"
+                  type="submit"
+                  onClick={() => {
+                    deleteUnit(item.id);
+                  }}
+                >
                   Remove Unit
-                </button> */}
+                </button>
               </div>
             ))}
           </div>
@@ -153,9 +162,15 @@ function PmDash() {
                   <p>Resident lease starts Date: {item.leaseDate}</p>
                   <p>Resident Duration: {item.leaseDuration} year/s</p>
                 </div>
-                {/* <button id="deleteTenant" onClick={deleteTenant(item.id)}>
-                  Remove Resident
-                </button> */}
+                <button
+                  id="deleteUnit"
+                  type="submit"
+                  onClick={() => {
+                    deleteTenant(item.id);
+                  }}
+                >
+                  Remove Tenants
+                </button>
               </div>
             ))}
           </div>
