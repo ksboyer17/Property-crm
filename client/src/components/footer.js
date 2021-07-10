@@ -25,7 +25,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <p class="copyright">Gardner Property Manager © 2021</p>
+      <p class="copyright">Gardner Property Manager © 2021 All Rights Reserved.</p>
       <ul class="contributors">
         <li>Contributors:</li>
         <li><a href="https://github.com/sj212131" target= "_blank">Dwayne Piao</a></li>
