@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Tenant, User } = require("../../models");
+const { Tenant, Unit, User } = require("../../models");
 
 // get a list of properties (that belong to the currently logged in user)
 router.get("/", async (req, res) => {

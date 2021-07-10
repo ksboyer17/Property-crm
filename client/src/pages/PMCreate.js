@@ -29,7 +29,7 @@ function SignupPage() {
   };
 
   return (
-    <div class="logincss" id="logincss">
+    <div class="PmDash data-box" id="PmDash">
       <p>This is PMCreate part</p>
       <div className="columns">
         {" "}
