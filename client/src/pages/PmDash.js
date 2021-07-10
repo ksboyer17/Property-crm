@@ -101,17 +101,20 @@ function PmDash() {
             {properties.map((item) => (
               <div key={item.id} className="">
                 <div className="">
-                  <h2>Properites address is: {item.address}</h2>
+                  <h2>Properites address is: {item.address} </h2>
                   <p>Properites City is: {item.city}</p>
                   <p>State: {item.state}</p>
                   <p>zip : {item.zip}</p>
                 </div>
-                {/* <button
+                <button
                   id="deleteProperties"
-                  onClick={deleteProperties(item.id)}
+                  type="submit"
+                  onClick={() => {
+                    deleteProperties(item.id);
+                  }}
                 >
                   Remove Properites
-                </button> */}
+                </button>
               </div>
             ))}
           </div>
@@ -130,9 +133,15 @@ function PmDash() {
                   <p>unit rent is: {item.rent}</p>
                   <p>rent due date is : {item.rentDue}</p>
                 </div>
-                {/* <button id="deleteUnit" onClick={deleteUnit(item.id)}>
+                <button
+                  id="deleteUnit"
+                  type="submit"
+                  onClick={() => {
+                    deleteUnit(item.id);
+                  }}
+                >
                   Remove Unit
-                </button> */}
+                </button>
               </div>
             ))}
           </div>
@@ -153,9 +162,15 @@ function PmDash() {
                   <p>Resident lease starts Date: {item.leaseDate}</p>
                   <p>Resident Duration: {item.leaseDuration} year/s</p>
                 </div>
-                {/* <button id="deleteTenant" onClick={deleteTenant(item.id)}>
-                  Remove Resident
-                </button> */}
+                <button
+                  id="deleteUnit"
+                  type="submit"
+                  onClick={() => {
+                    deleteTenant(item.id);
+                  }}
+                >
+                  Remove Tenants
+                </button>
               </div>
             ))}
           </div>
