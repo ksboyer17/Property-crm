@@ -32,7 +32,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // create a new property (that will belong to the currently logged in user)
-router.post("/:id", async (req, res) => {
+router.post("/", async (req, res) => {
   const { user_id } = req.session;
   try {
     // create a new property and save it to the database

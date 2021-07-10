@@ -57,6 +57,38 @@ function PmDash() {
       .catch((err) => console.log(err));
   }
 
+  async function addTenant(event) {
+    event.preventDefault();
+
+    const firstName = document.querySelector("#add-firstName").value.trim();
+    const lastName = document.querySelector("#add-lastName").value.trim();
+    const phone = document.querySelector("#add-phoneNumber").value.trim();
+    const leaseDate = document.querySelector("#add-leaseDate").value.trim();
+    const leaseDuration = document
+      .querySelector("#add-leaseDuration")
+      .value.trim();
+
+    if (firstName && lastName && phone && leaseDate && leaseDuration) {
+      let response = await fetch("/api/auth", {
+        method: "POST",
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          phone,
+          leaseDate,
+          leaseDuration,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      response = await response.json();
+
+      console.log("******", response);
+      return response;
+    } else {
+      console.log("NO data received");
+    }
+  }
+
   // function loadWorkorder() {
   //   API.getWorkorder()
   //     .then((res) => {
@@ -163,7 +195,7 @@ function PmDash() {
                   <p>Resident Duration: {item.leaseDuration} year/s</p>
                 </div>
                 <button
-                  id="deleteUnit"
+                  id="deleteTenants"
                   type="submit"
                   onClick={() => {
                     deleteTenant(item.id);
@@ -176,9 +208,71 @@ function PmDash() {
           </div>
         </div>
 
-        <button id="logout" onClick={logout}>
-          Logout
-        </button>
+        <div className="data-box card">
+          <h1>function list</h1>
+          <div
+            id="Pm-tenants"
+            className="card-content" //add style class here
+          >
+            <button id="logout" onClick={logout}>
+              Logout
+            </button>
+
+            <input
+              className="input add-input"
+              style={{ width: "400px" }}
+              type="text"
+              placeholder="First Name"
+              name="add-firstName"
+              id="add-firstName"
+            ></input>
+            <input
+              className="input add-input"
+              style={{ width: "400px" }}
+              type="text"
+              placeholder="Last Name"
+              name="add-lastName"
+              id="add-lastName"
+            ></input>
+            <input
+              className="input add-input"
+              style={{ width: "400px" }}
+              type="text"
+              placeholder="Phone Number"
+              name="add-phoneNumber"
+              id="add-phoneNumber"
+            ></input>
+            <input
+              className="input add-input"
+              style={{ width: "400px" }}
+              type="text"
+              placeholder="lease starts Date"
+              name="add-leaseDate"
+              id="add-leaseDate"
+            ></input>
+            <input
+              className="input add-input"
+              style={{ width: "400px" }}
+              type="text"
+              placeholder="Lease Duration"
+              name="add-leaseDuration"
+              id="add-leaseDuration"
+            ></input>
+            <button
+              id="addTenats"
+              type="submit"
+              onClick={() => {
+                addTenant();
+              }}
+            >
+              Add New Tenants
+            </button>
+            {/* 
+            <button id="addUnit">Add New Unit</button>
+
+            <button id="addProperty">Add New Properties</button> */}
+          </div>
+        </div>
       </div>
     </section>
   );

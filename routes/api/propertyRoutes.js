@@ -6,11 +6,16 @@ router.get("/", async (req, res) => {
   //const { user_id } = req.session;
   try {
     // get the currently logged in user
-    const property = await Property.find().populate("properties");
+    const user = await User.findOne({ _id: req.session.user_id }).populate(
+      "properties"
+    );
+
+    console.log(user);
 
     // return the properties
-    console.log(property);
-    res.status(200).json(property);
+    console.log(user);
+    const properties = user.toObject().properties;
+    res.status(200).json(properties);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -22,7 +27,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // get the property by it's id
-    const property = await Property.findOne({ id: id });
+    const property = await Property.findOne({ id: id }).populate("units");
 
     // return the property
     res.status(200).json(property);
@@ -42,16 +47,17 @@ router.post("/", async (req, res) => {
 
     // get the currently logged in user
     const user = await User.findOne({ _id: user_id });
+    const userObj = user.toObject();
 
     // update the list of the user's properties to include the newly created one
-    user.properties = [...user.properties, propertyData._id];
+    user.properties = [...userObj.properties, propertyData._id];
 
     // save the updatedUser to the database
     const updatedUser = await user.save();
 
     console.log(updatedUser);
 
-    res.status(200).json(updatedUser);
+    res.status(200).json(property);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
