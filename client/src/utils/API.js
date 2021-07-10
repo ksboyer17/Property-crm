@@ -50,6 +50,10 @@ export default {
     return axios.post("/api/tenants/", {});
   },
 
+  checkAuth: function () {
+    return axios.get("/api/auth/checkAuth");
+  },
+
   loginUser: function (credentials) {
     return axios.post("/api/auth/login", credentials);
   },

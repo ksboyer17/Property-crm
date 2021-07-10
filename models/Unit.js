@@ -14,12 +14,10 @@ const unitSchema = new Schema({
     type: Date,
     required: "Rent Due Date is required",
   },
-  tenant: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "tenant",
-    },
-  ],
+  tenant: {
+    type: Schema.Types.ObjectId,
+    ref: "tenant",
+  },
 });
 
 const Unit = model("Unit", unitSchema);
