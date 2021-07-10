@@ -21,6 +21,19 @@ html {
   color: #d7be69 !important;
 }
 
+#nav {
+  position: relative;
+  min-width: 218px; 
+}
+
+.nav-text {
+  position: absolute; 
+  right: 0;
+  top: 0; 
+  float: right;
+  
+}
+
 img {
   width: 5rem;
   height: 3.5rem;

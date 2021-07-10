@@ -93,18 +93,18 @@ function PmDash() {
   return (
     <section id="PmDash">
       <div>
-        <div className="data-box" id="Pm-properties">
-          <h1>Properites List</h1>
+        <div className="data-box card" id="Pm-properties">
+          <h1>Properties List</h1>
           <div
-            className="properties-data" //add style class here
+            className="properties-data card-content" //add style class here
           >
             {properties.map((item) => (
-              <div key={item.id} className="">
-                <div className="">
-                  <h2>Properites address is: {item.address} </h2>
-                  <p>Properites City is: {item.city}</p>
+              <div key={item.id} className="media-content">
+                <div className="content">
+                  <h2>Property address is: {item.address}</h2>
+                  <p>Property City is: {item.city}</p>
                   <p>State: {item.state}</p>
-                  <p>zip : {item.zip}</p>
+                  <p>Zip Code : {item.zip}</p>
                 </div>
                 <button
                   id="deleteProperties"
@@ -120,18 +120,18 @@ function PmDash() {
           </div>
         </div>
 
-        <div className="data-box">
-          <h1>This is PmDash part， unit list</h1>
+        <div className="data-box card">
+          <h1>Units list</h1>
           <div
             id="Pm-unit"
-            className="" //add style class here
+            className="card-content" //add style class here
           >
             {units.map((item) => (
-              <div key={item.id} className="">
-                <div className="">
+              <div key={item.id} className="media-content">
+                <div className="content">
                   <h2>Unit number is: {item.number}</h2>
-                  <p>unit rent is: {item.rent}</p>
-                  <p>rent due date is : {item.rentDue}</p>
+                  <p>Unit Rent is: {item.rent}</p>
+                  <p>Rent Due Date is : {item.rentDue}</p>
                 </div>
                 <button
                   id="deleteUnit"
@@ -147,15 +147,15 @@ function PmDash() {
           </div>
         </div>
 
-        <div className="data-box">
-          <h1>This is PmDash part， tenant list</h1>
+        <div className="data-box card">
+          <h1>Tenant list</h1>
           <div
             id="Pm-tenants"
-            className="" //add style class here
+            className="card-content" //add style class here
           >
             {tenants.map((item) => (
-              <div key={item.id} className="">
-                <div className="">
+              <div key={item.id} className="media-content">
+                <div className="content">
                   <h2>Resident firstname is: {item.firstName}</h2>
                   <p>Resident lastname is: {item.lastName}</p>
                   <p>Resident phone is: {item.phone}</p>
