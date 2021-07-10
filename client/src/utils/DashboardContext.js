@@ -10,7 +10,7 @@ const types = {
 
 const dashboardReducer = (state, action) => {
   switch (action.type) {
-    case type.SET_PROPERTY:
+    case types.SET_PROPERTY:
       return {
         ...state,
         property: action.payload,
