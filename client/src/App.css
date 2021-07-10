@@ -57,7 +57,7 @@ img {
   padding-top: 0; 
 }
 
-.lablel {
+.label {
   color: #d7be69;
 }
 
@@ -110,6 +110,11 @@ img {
 .contributors li {
   display: inline-block;
   padding: 0.5rem;
+  
+}
+
+.contributors a {
+  color: #d7be69;
 }
 
 .footer-left {
