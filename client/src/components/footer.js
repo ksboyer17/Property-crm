@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 function Footer() {
   //let residentData = this.props.residentData;
@@ -28,10 +28,10 @@ function Footer() {
       <p class="copyright">Gardner Property Manager © 2021</p>
       <ul class="contributors">
         <li>Contributors:</li>
-        <li><a href="#">Dwayne Piao</a></li>
-        <li><a href="#">Taylor Leong</a></li>
-        <li><a href="#">Louis Falla</a></li>
-        <li><a href="#">Kenneth Boyer</a></li>
+        <li><a href="https://github.com/sj212131" target= "_blank">Dwayne Piao</a></li>
+        <li><a href="https://github.com/tjl2125" target= "_blank">Taylor Leong</a></li>
+        <li><a href="https://github.com/chronoslou" target= "_blank">Louis Falla</a></li>
+        <li><a href="https://github.com/ksboyer17" target= "_blank">Kenneth Boyer</a></li>
       </ul>
     </footer>
   );
