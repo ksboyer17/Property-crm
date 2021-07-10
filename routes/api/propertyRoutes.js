@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // get the property by it's id
-    const property = await Property.findOne({ _id: id });
+    const property = await Property.findOne({ id: id });
 
     // return the property
     res.status(200).json(property);
@@ -62,8 +62,8 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await Property.findOneAndUpdate({ _id: id }, req.body);
-    const updatedProperty = await Property.findOne({ _id: id });
+    await Property.findOneAndUpdate({ id: id }, req.body);
+    const updatedProperty = await Property.findOne({ id: id });
 
     res.status(200).json(updatedProperty);
   } catch (err) {
@@ -77,7 +77,7 @@ router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // delete the property by its id
-    await Property.deleteOne({ _id: id });
+    await Property.deleteOne({ id: id });
 
     res.status(204).end();
   } catch (err) {
