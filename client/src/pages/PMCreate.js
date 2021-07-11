@@ -93,7 +93,7 @@ function SignupPage() {
               </div>
             </div>
 
-            <button class="dashboard-link" onClick={signupFormHandler}>
+            <button class= "button" id="dashboard-link" onClick={signupFormHandler}>
               Sign up and login
               {/* Link to PM Dashboard page */}
             </button>
