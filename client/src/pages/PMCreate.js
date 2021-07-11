@@ -29,8 +29,9 @@ function SignupPage() {
   };
 
   return (
+    <div className = "PMContainer">
     <div class="PmDash data-box" id="PmDash">
-      <p>This is PMCreate part</p>
+      <h1>Property Manager Account Creation</h1>
       <div className="columns">
         {" "}
         {/* the columns class will make all of the columns inside equal width */}
@@ -41,6 +42,7 @@ function SignupPage() {
             <p>Support Hours and Phone Number</p>
           </div>
         </div>
+        
         <div className="column">
           <form className="box user-info">
             <div class="field">
@@ -100,6 +102,7 @@ function SignupPage() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

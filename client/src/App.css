@@ -150,6 +150,13 @@ i {
   display: inline-table;
   border-radius: 20px;
   margin: 1rem;
+
+}
+
+.PMContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #Pm-properties {
