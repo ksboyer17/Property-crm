@@ -30,7 +30,7 @@ function SignupPage() {
 
   return (
     <div className = "PMContainer">
-    <div class="PmDash data-box" id="PmDash">
+    <div class="PmDash data-box-create" id="PmDash">
       <h2>Property Manager Account Creation</h2>
       <div className="columns">
         {" "}

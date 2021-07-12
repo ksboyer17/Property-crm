@@ -12,6 +12,11 @@ html {
 
 .box.prop-info {
   font-size: 20px;
+
+  color: #d7be69 !important;
+  margin-left: 1rem;
+  font-size: 2rem; 
+  font-weight: 700; 
 }
 
 .home,
@@ -41,10 +46,10 @@ img {
 }
 
 #Landteg {
-  color: gold !important;
+  color: gold !important ;
   font-weight: bold;
   font-size: 3.25rem;
-  margin-top: 6.5rem;
+  margin-top: 6.5rem ;
 }
 
 .input {
@@ -55,7 +60,7 @@ img {
 #userInput {
   margin-top: 10% !important;
   padding: 1.5rem;
-  padding-top: 0; 
+  padding-top: 0 ; 
 }
 
 .label {
@@ -137,11 +142,10 @@ img {
 .contributors li {
   display: inline-block;
   padding: 0.5rem;
-  
 }
 
 .contributors a {
-  color: #d7be69;
+  color: #d7be69 ;
 }
 
 .footer-left {
@@ -165,9 +169,9 @@ i {
 
 /*pm-section*/
 
-.data-box {
-  /* color: white; */
-  width: auto;
+.data-box-create {
+  color: white;
+  width: auto ;
   height: 300px !important;
   position: relative;
   background-image: url("./assets/Nav-background.png");
@@ -177,6 +181,20 @@ i {
   display: inline-table;
   border-radius: 20px;
   margin: 1rem;
+}
+
+.data-box {
+  color: white;
+  width: 23%;
+  height: 300px !important;
+  position: relative;
+  background-image: url("./assets/Nav-background.png");
+  opacity: 0.7;
+  text-align: center;
+  justify-items: center;
+  display: inline-table;
+  border-radius: 20px;
+  margin: 1rem;  
 
 }
 
@@ -184,13 +202,6 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.box.prop-info {
-  color: #d7be69 !important;
-  margin-left: 1rem;
-  font-size: 2rem; 
-  font-weight: 700; 
 }
 
 .box.user-info {
