@@ -9,9 +9,8 @@ import {
 //import Saved from "./Saved";
 import Landing from "./Landing";
 import PmDash from "./PmDash";
-import TenantDash from "./TenantDash";
+import PmDetail from "./PmDetail";
 import PMCreate from "./PMCreate";
-import TenantCreate from "./TenantCreate";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { useAuthContext } from "../utils/AuthContext";
@@ -33,8 +32,8 @@ const PageRouter = () => {
           <Switch>
             <DashboardProvider>
               <Route exact path="/" component={PmDash} />
+              <Route exact path="/PmDetail" component={PmDetail} />
             </DashboardProvider>
-            <Redirect from="*" to="/" />
           </Switch>
         )}
       </div>

@@ -1,13 +1,11 @@
-import React, { Component, useState, useEffect } from "react";
-// import residentData from "../residentData";
-// import managementData from "../managementData";
+import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
 function PmDash() {
   const [properties, setProperties] = useState([]);
-  const [units, setUnits] = useState([]);
-  const [tenants, setTenants] = useState([]);
+  // const [units, setUnits] = useState([]);
+  // const [tenants, setTenants] = useState([]);
 
   function loadProperites() {
     API.getProperties()
@@ -27,56 +25,43 @@ function PmDash() {
       .catch((err) => console.log(err));
   }
 
-  function loadUnits() {
-    API.getUnit()
-      .then((res) => {
-        console.log("this is unit: ", res);
-        setUnits(res.data);
-      })
-      .catch((err) => console.log(err));
+  function refresh() {
+    window.location.reload();
   }
 
-  function deleteUnit(id) {
-    API.deleteUnit(id)
-      .then((res) => loadUnits())
-      .catch((err) => console.log(err));
-  }
+  // function loadTenants() {
+  //   API.getTenant()
+  //     .then((res) => {
+  //       console.log("this is Resident: ", res);
+  //       setTenants(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
-  function loadTenants() {
-    API.getTenant()
-      .then((res) => {
-        console.log("this is Resident: ", res);
-        setTenants(res.data);
-      })
-      .catch((err) => console.log(err));
-  }
+  // function deleteTenant(id) {
+  //   API.deleteTenant(id)
+  //     .then((res) => loadTenants())
+  //     .catch((err) => console.log(err));
+  // }
 
-  function deleteTenant(id) {
-    API.deleteTenant(id)
-      .then((res) => loadTenants())
-      .catch((err) => console.log(err));
-  }
-
-  async function addTenant(event) {
-    event.preventDefault();
-
-    const firstName = document.querySelector("#add-firstName").value.trim();
-    const lastName = document.querySelector("#add-lastName").value.trim();
-    const phone = document.querySelector("#add-phoneNumber").value.trim();
-    const leaseDate = document.querySelector("#add-leaseDate").value.trim();
-    const leaseDuration = document
-      .querySelector("#add-leaseDuration")
+  //async function addProperty(event)
+  const addProperty = async function (e) {
+    e.preventDefault();
+    const address = document
+      .querySelector("#add-property-address")
       .value.trim();
+    const city = document.querySelector("#add-city").value.trim();
+    const state = document.querySelector("#add-state").value.trim();
+    const zip = document.querySelector("#add-zip").value.trim();
 
-    if (firstName && lastName && phone && leaseDate && leaseDuration) {
-      let response = await fetch("/api/auth", {
+    if (address && city && state && zip) {
+      let response = await fetch("/api/properties", {
         method: "POST",
         body: JSON.stringify({
-          firstName,
-          lastName,
-          phone,
-          leaseDate,
-          leaseDuration,
+          address,
+          city,
+          state,
+          zip,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -87,7 +72,7 @@ function PmDash() {
     } else {
       console.log("NO data received");
     }
-  }
+  };
 
   // function loadWorkorder() {
   //   API.getWorkorder()
@@ -105,8 +90,7 @@ function PmDash() {
 
   useEffect(() => {
     loadProperites();
-    loadUnits();
-    loadTenants();
+    //loadTenants();
   }, []);
 
   const logout = async () => {
@@ -131,77 +115,28 @@ function PmDash() {
             className="properties-data card-content" //add style class here
           >
             {properties.map((item) => (
-              <div key={item.id} className="media-content">
+              <div key={item.address} className="media-content">
                 <div className="content">
                   <h2>Property address is: {item.address}</h2>
                   <p>Property City is: {item.city}</p>
                   <p>State: {item.state}</p>
                   <p>Zip Code : {item.zip}</p>
                 </div>
+                <Link
+                  to="/PmDetail"
+                  className="button is-success"
+                  id="PmDetailbtn"
+                >
+                  Property Detail
+                </Link>
                 <button
                   id="deleteProperties"
                   type="submit"
                   onClick={() => {
-                    deleteProperties(item.id);
+                    deleteProperties(item.address);
                   }}
                 >
                   Remove Properites
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="data-box card">
-          <h1>Units list</h1>
-          <div
-            id="Pm-unit"
-            className="card-content" //add style class here
-          >
-            {units.map((item) => (
-              <div key={item.id} className="media-content">
-                <div className="content">
-                  <h2>Unit number is: {item.number}</h2>
-                  <p>Unit Rent is: {item.rent}</p>
-                  <p>Rent Due Date is : {item.rentDue}</p>
-                </div>
-                <button
-                  id="deleteUnit"
-                  type="submit"
-                  onClick={() => {
-                    deleteUnit(item.id);
-                  }}
-                >
-                  Remove Unit
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="data-box card">
-          <h1>Tenant list</h1>
-          <div
-            id="Pm-tenants"
-            className="card-content" //add style class here
-          >
-            {tenants.map((item) => (
-              <div key={item.id} className="media-content">
-                <div className="content">
-                  <h2>Resident firstname is: {item.firstName}</h2>
-                  <p>Resident lastname is: {item.lastName}</p>
-                  <p>Resident phone is: {item.phone}</p>
-                  <p>Resident lease starts Date: {item.leaseDate}</p>
-                  <p>Resident Duration: {item.leaseDuration} year/s</p>
-                </div>
-                <button
-                  id="deleteTenants"
-                  type="submit"
-                  onClick={() => {
-                    deleteTenant(item.id);
-                  }}
-                >
-                  Remove Tenants
                 </button>
               </div>
             ))}
@@ -219,53 +154,46 @@ function PmDash() {
             </button>
 
             <input
-              className="input add-input"
+              className="input add-property"
               style={{ width: "400px" }}
               type="text"
-              placeholder="First Name"
-              name="add-firstName"
-              id="add-firstName"
+              placeholder="Add Address"
+              name="add-property-address"
+              id="add-property-address"
             ></input>
             <input
-              className="input add-input"
+              className="input add-property"
               style={{ width: "400px" }}
               type="text"
-              placeholder="Last Name"
-              name="add-lastName"
-              id="add-lastName"
+              placeholder="City Name"
+              name="add-city"
+              id="add-city"
             ></input>
             <input
-              className="input add-input"
+              className="input add-property"
               style={{ width: "400px" }}
               type="text"
-              placeholder="Phone Number"
-              name="add-phoneNumber"
-              id="add-phoneNumber"
+              placeholder="State"
+              name="add-state"
+              id="add-state"
             ></input>
             <input
-              className="input add-input"
+              className="input add-property"
               style={{ width: "400px" }}
               type="text"
-              placeholder="lease starts Date"
-              name="add-leaseDate"
-              id="add-leaseDate"
-            ></input>
-            <input
-              className="input add-input"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="Lease Duration"
-              name="add-leaseDuration"
-              id="add-leaseDuration"
+              placeholder="Zip Code"
+              name="add-zip"
+              id="add-zip"
             ></input>
             <button
               id="addTenats"
               type="submit"
-              onClick={() => {
-                addTenant();
+              onClick={(e) => {
+                addProperty(e);
+                refresh();
               }}
             >
-              Add New Tenants
+              Add New property
             </button>
             {/* 
             <button id="addUnit">Add New Unit</button>

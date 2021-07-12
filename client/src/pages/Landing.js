@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 import { useAuthContext } from "../utils/AuthContext";
@@ -69,14 +69,14 @@ function Landing() {
         </div>
       </div>
 
-      <div class="field is-grouped is-grouped-centered">
-        <p class="control">
+      <div className="field is-grouped is-grouped-centered">
+        <p className="control">
           <Link to="/signup">
-            <button class="button is-success">Sign Up</button>
+            <button className="button is-success">Sign Up</button>
           </Link>
         </p>
-        <p class="control">
-          <button class="button is-success" onClick={loginFormHandler}>
+        <p className="control">
+          <button className="button is-success" onClick={loginFormHandler}>
             Sign In
           </button>
         </p>
