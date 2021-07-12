@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
-function PmDash() {
+function Properties() {
   const [properties, setProperties] = useState([]);
   // const [units, setUnits] = useState([]);
   // const [tenants, setTenants] = useState([]);
@@ -107,7 +107,7 @@ function PmDash() {
   };
 
   return (
-    <section id="PmDash">
+    <section id="Properties" className="container">
       <div>
         <div className="data-box card" id="Pm-properties">
           <h1>Properties List</h1>
@@ -115,7 +115,7 @@ function PmDash() {
             className="properties-data card-content" //add style class here
           >
             {properties.map((item) => (
-              <div key={item.address} className="media-content">
+              <div key={item.id} className="media-content">
                 <div className="content">
                   <h2>Property address is: {item.address}</h2>
                   <p>Property City is: {item.city}</p>
@@ -123,21 +123,12 @@ function PmDash() {
                   <p>Zip Code : {item.zip}</p>
                 </div>
                 <Link
-                  to="/PmDetail"
+                  to={`/property/${item.id}`}
                   className="button is-success"
                   id="PmDetailbtn"
                 >
-                  Property Detail
+                  View Details
                 </Link>
-                <button
-                  id="deleteProperties"
-                  type="submit"
-                  onClick={() => {
-                    deleteProperties(item.address);
-                  }}
-                >
-                  Remove Properites
-                </button>
               </div>
             ))}
           </div>
@@ -206,4 +197,4 @@ function PmDash() {
   );
 }
 
-export default PmDash;
+export default Properties;

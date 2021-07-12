@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 
-function PmDetail() {
+function PropertyDetails() {
   const [units, setUnits] = useState([]);
 
   function loadUnits() {
@@ -114,7 +114,7 @@ function PmDetail() {
   };
 
   return (
-    <section id="PmDash">
+    <section id="PmDash" className="container">
       <div>
         <div className="data-box card" id="Pm-properties">
           <h1>Properties List</h1>
@@ -259,4 +259,4 @@ function PmDetail() {
     </section>
   );
 }
-export default PmDetail;
+export default PropertyDetails;
