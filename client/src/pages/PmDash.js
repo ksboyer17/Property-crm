@@ -144,7 +144,7 @@ function PmDash() {
         </div>
 
         <div className="data-box card">
-          <h1>function list</h1>
+          <h1>Function list</h1>
           <div
             id="Pm-tenants"
             className="card-content" //add style class here

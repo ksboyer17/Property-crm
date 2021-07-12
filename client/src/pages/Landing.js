@@ -72,11 +72,11 @@ function Landing() {
       <div className="field is-grouped is-grouped-centered">
         <p className="control">
           <Link to="/signup">
-            <button className="button is-success">Sign Up</button>
+            <button className="button">Sign Up</button>
           </Link>
         </p>
         <p className="control">
-          <button className="button is-success" onClick={loginFormHandler}>
+          <button className="button" onClick={loginFormHandler}>
             Sign In
           </button>
         </p>

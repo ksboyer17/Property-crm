@@ -6,7 +6,7 @@ export default class Header extends Component {
     //let residentData = this.props.residentData;
     return (
       <React.Fragment>
-        <header className="home navbar is-spaced is-success is-transparent">
+        <header className="home navbar is-spaced is-transparent">
           <img src={logo} alt="logo" id="logoimg"></img>
           <nav id="nav-wrap" className="navbar-menu ">
             <ul id="nav" className="navbar-end ">

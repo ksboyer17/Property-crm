@@ -12,6 +12,11 @@ html {
 
 .box.prop-info {
   font-size: 20px;
+
+  color: #d7be69 !important;
+  margin-left: 1rem;
+  font-size: 2rem; 
+  font-weight: 700; 
 }
 
 .home,
@@ -41,10 +46,10 @@ img {
 }
 
 #Landteg {
-  color: #d7be69 !important;
+  color: gold !important ;
   font-weight: bold;
   font-size: 3.25rem;
-  margin-top: 3rem;
+  margin-top: 6.5rem ;
 }
 
 .input {
@@ -55,9 +60,10 @@ img {
 #userInput {
   margin-top: 10% !important;
   padding: 1.5rem;
+  padding-top: 0 ; 
 }
 
-.lablel {
+.label {
   color: #d7be69;
 }
 
@@ -138,6 +144,10 @@ img {
   padding: 0.5rem;
 }
 
+.contributors a {
+  color: #d7be69 ;
+}
+
 .footer-left {
   border: 1px solid;
   border: 1px solid;
@@ -159,6 +169,19 @@ i {
 
 /*pm-section*/
 
+.data-box-create {
+  width: auto ;
+  height: 300px !important;
+  position: relative;
+  background-image: url("./assets/Nav-background.png");
+  opacity: 0.8;
+  text-align: center;
+  justify-items: center;
+  display: inline-table;
+  border-radius: 20px;
+  margin: 1rem;
+}
+
 .data-box {
   color: white;
   width: 23%;
@@ -170,7 +193,22 @@ i {
   justify-items: center;
   display: inline-table;
   border-radius: 20px;
-  margin: 1rem;
+  margin: 1rem;  
+
+}
+
+.PMContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box.user-info {
+  margin-right: 1rem; 
+}
+
+.info-start {
+  color: goldenrod; 
 }
 
 #Pm-properties {

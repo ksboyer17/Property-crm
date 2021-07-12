@@ -11,27 +11,27 @@ function Footer() {
         </div> */}
       <div className="footer-icon">
         <div className="social">
-          <a href="#">
+          <a href="https://www.facebook.com/"  target="_blank">
             <i className="fab fa-facebook-square fa-3x"></i>
           </a>
-          <a href="#">
+          <a href="https://www.linkedin.com/" target= "_blank">
             <i className="fab fa-linkedin fa-3x"></i>
           </a>
-          <a href="#">
+          <a href="https://www.github.com/" target= "_blank">
             <i className="fab fa-github-square fa-3x"></i>
           </a>
-          <a href="#">
+          <a href="https://www.twitter.com/" target="_blank">
             <i className="fab fa-twitter fa-3x"></i>
           </a>
         </div>
       </div>
-      <p className="copyright">Bleecker Street © 2021</p>
+      <p className="copyright">Gardner Property Manager © 2021 All Rights Reserved.</p>
       <ul className="contributors">
         <li>Contributors:</li>
-        <li>Dwayne Piao</li>
-        <li>Taylor Leong</li>
-        <li>Louis Falla</li>
-        <li>Kenneth Boyer </li>
+        <li><a href="https://github.com/sj212131" target= "_blank">Dwayne Piao</a></li>
+        <li><a href="https://github.com/tjl2125" target= "_blank">Taylor Leong</a></li>
+        <li><a href="https://github.com/chronoslou" target= "_blank">Louis Falla</a></li>
+        <li><a href="https://github.com/ksboyer17" target= "_blank">Kenneth Boyer</a></li>
       </ul>
     </footer>
   );

@@ -29,18 +29,24 @@ function SignupPage() {
   };
 
   return (
-    <div class="PmDash data-box" id="PmDash">
-      <p>This is PMCreate part</p>
+    <div className = "PMContainer">
+    <div class="PmDash data-box-create" id="PmDash">
+      <h2>Property Manager Account Creation</h2>
       <div className="columns">
         {" "}
         {/* the columns class will make all of the columns inside equal width */}
         <div className="column">
           {/*Property Basic Info Container, still need to work on  */}
           <div className="box prop-info">
-            <p>Address</p>
-            <p>Support Hours and Phone Number</p>
+            <p className="info-start">Main Office Address: </p>
+            <p>43 West 32nd street</p>
+            <p className="info-start">Support Hours:</p>
+            <p>Mon-Fri 9am - 8pm</p> 
+            <p>Sat-Sun 11am - 5pm</p>
+            <p><span className="info-start">Phone Number:</span>(123)456-7890</p>
           </div>
         </div>
+        
         <div className="column">
           <form className="box user-info">
             <div class="field">
@@ -56,12 +62,12 @@ function SignupPage() {
             </div>
 
             <div class="field">
-              <label class="label">Last name</label>
+              <label class="label">Last Name</label>
               <div class="control">
                 <input
                   class="input"
                   type="text"
-                  placeholder="last Name"
+                  placeholder="Last Name"
                   id="lastName-signup"
                 />
               </div>
@@ -91,7 +97,7 @@ function SignupPage() {
               </div>
             </div>
 
-            <button class="dashboard-link" onClick={signupFormHandler}>
+            <button class= "button" id="dashboard-link" onClick={signupFormHandler}>
               Sign up and login
               {/* Link to PM Dashboard page */}
             </button>
@@ -100,6 +106,7 @@ function SignupPage() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }
