@@ -170,12 +170,11 @@ i {
 /*pm-section*/
 
 .data-box-create {
-  color: white;
   width: auto ;
   height: 300px !important;
   position: relative;
   background-image: url("./assets/Nav-background.png");
-  opacity: 0.7;
+  opacity: 0.8;
   text-align: center;
   justify-items: center;
   display: inline-table;

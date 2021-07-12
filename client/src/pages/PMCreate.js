@@ -62,7 +62,7 @@ function SignupPage() {
             </div>
 
             <div class="field">
-              <label class="label">Last name</label>
+              <label class="label">Last Name</label>
               <div class="control">
                 <input
                   class="input"
