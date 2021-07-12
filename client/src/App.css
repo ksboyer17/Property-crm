@@ -166,8 +166,8 @@ i {
 /*pm-section*/
 
 .data-box {
-  color: white;
-  width: 23%;
+  /* color: white; */
+  width: auto;
   height: 300px !important;
   position: relative;
   background-image: url("./assets/Nav-background.png");
@@ -184,6 +184,21 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.box.prop-info {
+  color: #d7be69 !important;
+  margin-left: 1rem;
+  font-size: 2rem; 
+  font-weight: 700; 
+}
+
+.box.user-info {
+  margin-right: 1rem; 
+}
+
+.info-start {
+  color: goldenrod; 
 }
 
 #Pm-properties {
