@@ -1,7 +1,11 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import API from "../utils/API";
+import { useAuthContext } from "../utils/AuthContext";
 
 function Landing() {
+  const { login } = useAuthContext();
+
   const [credentials, setCredentials] = useState({});
 
   const handleInputChange = (event) => {
@@ -16,24 +20,14 @@ function Landing() {
 
     if (email && password) {
       // Send a POST request to the API endpoint
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      if (response.ok) {
-        // If successful, redirect the browser to the profile page
-        document.location.replace("/PmDash");
-      } else {
-        alert(response.statusText);
+      try {
+        const response = await API.loginUser({ email, password });
+        login(response.data);
+      } catch (err) {
+        alert("Invalid credentials!");
+        console.log("login error", err);
       }
     }
-  };
-
-  const signinPageHandler = (event) => {
-    event.preventDefault();
-    document.location.replace("/PMCreate");
   };
 
   return (
@@ -75,14 +69,14 @@ function Landing() {
         </div>
       </div>
 
-      <div class="field is-grouped is-grouped-centered">
-        <p class="control">
-          <button class="button" onClick={signinPageHandler}>
-            Sign Up
-          </button>
+      <div className="field is-grouped is-grouped-centered">
+        <p className="control">
+          <Link to="/signup">
+            <button className="button">Sign Up</button>
+          </Link>
         </p>
-        <p class="control">
-          <button class="button" onClick={loginFormHandler}>
+        <p className="control">
+          <button className="button" onClick={loginFormHandler}>
             Sign In
           </button>
         </p>

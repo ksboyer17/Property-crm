@@ -12,7 +12,7 @@ export default class Header extends Component {
             <ul id="nav" className="navbar-end ">
               <li className="current">
                 <a className="smoothscroll navbar-item nav-text" href="home">
-                  <i class="fas fa-home home-icon"></i>
+                  <i className="fas fa-home home-icon"></i>
                   Home
                 </a>
               </li>

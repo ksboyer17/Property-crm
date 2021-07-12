@@ -22,6 +22,10 @@ const tenantSchema = new Schema({
   leaseDuration: {
     type: Number,
   },
+  unit: {
+    type: Schema.Types.ObjectId,
+    ref: "unit",
+  },
 });
 
 const Tenant = model("Tenant", tenantSchema);

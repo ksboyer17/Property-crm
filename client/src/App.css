@@ -1,6 +1,8 @@
 body {
   background-image: url("./assets/background.png");
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: auto;
+  background-color: black;
   height: 100%;
 }
 
@@ -23,15 +25,14 @@ html {
 
 #nav {
   position: relative;
-  min-width: 218px; 
+  min-width: 218px;
 }
 
 .nav-text {
-  position: absolute; 
+  position: absolute;
   right: 0;
-  top: 0; 
+  top: 0;
   float: right;
-  
 }
 
 img {
@@ -65,15 +66,41 @@ img {
   color: #d7be69 !important;
 }
 
-.button {
+.button,
+#logout,
+#addTenats,
+#addUnit,
+#addProperty,
+#deleteUnit,
+#deleteTenants {
   background-color: gold !important;
   color: black !important;
   width: 12rem;
+  margin: 2.5rem 0;
+  cursor: pointer;
 }
 
-.button:hover {
+#deleteProperties {
+  background-color: lightcoral;
+  width: 3rem !important;
+}
+
+#PmDetailbtn {
+  width: 52%;
+  border-radius: 20px;
+}
+
+.button:hover,
+#logout:hover,
+#addTenats:hover,
+#addUnit:hover,
+#addProperty:hover,
+#deleteProperties:hover,
+#deleteUnit:hover,
+#deleteTenants:hover {
   transition: transform 1s ease;
   transform: scale(1.05);
+  cursor: pointer;
 }
 
 /* #logincss,
@@ -140,8 +167,8 @@ i {
 
 .data-box {
   color: white;
-  width: auto;
-  padding: auto;
+  width: 23%;
+  height: 300px !important;
   position: relative;
   background-image: url("./assets/Nav-background.png");
   opacity: 0.7;
@@ -161,9 +188,57 @@ i {
 
 #Pm-properties {
   margin: 1rem;
+  width: 65% !important;
 }
 
-#logout {
-  position: absolute;
-  margin-right: 0px !important;
+#logout,
+#addTenats,
+#addUnit,
+#addProperty,
+#deleteProperties,
+#deleteUnit,
+#deleteTenants {
+  position: relative;
+  width: 52% !important;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+  border-radius: 20px;
+  font-weight: bolder;
+}
+
+#PmDash h2,
+#Pm-unit h2 {
+  font-size: 1.5rem;
+  color: #f1c73b;
+  font-weight: bolder;
+}
+
+.media-content {
+  padding: 1rem;
+}
+
+.card-content {
+  overflow: auto;
+  height: 650px;
+}
+
+.add-property {
+  padding: 1rem;
+  margin: 0.3rem;
+}
+
+.PmDetail {
+  width: 60% !important;
+}
+
+.PmDetailFunction {
+  position: relative;
+  width: 25%;
+  background-image: url("./assets/Nav-background.png");
+  opacity: 0.7;
+  float: right;
+}
+
+#PmDetail {
+  display: inline;
 }

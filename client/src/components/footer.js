@@ -12,21 +12,21 @@ function Footer() {
       <div className="footer-icon">
         <div className="social">
           <a href="https://www.facebook.com/"  target="_blank">
-            <i class="fab fa-facebook-square fa-3x"></i>
+            <i className="fab fa-facebook-square fa-3x"></i>
           </a>
           <a href="https://www.linkedin.com/" target= "_blank">
-            <i class="fab fa-linkedin fa-3x"></i>
+            <i className="fab fa-linkedin fa-3x"></i>
           </a>
           <a href="https://www.github.com/" target= "_blank">
-            <i class="fab fa-github-square fa-3x"></i>
+            <i className="fab fa-github-square fa-3x"></i>
           </a>
           <a href="https://www.twitter.com/" target="_blank">
-            <i class="fab fa-twitter fa-3x"></i>
+            <i className="fab fa-twitter fa-3x"></i>
           </a>
         </div>
       </div>
-      <p class="copyright">Gardner Property Manager © 2021 All Rights Reserved.</p>
-      <ul class="contributors">
+      <p className="copyright">Gardner Property Manager © 2021 All Rights Reserved.</p>
+      <ul className="contributors">
         <li>Contributors:</li>
         <li><a href="https://github.com/sj212131" target= "_blank">Dwayne Piao</a></li>
         <li><a href="https://github.com/tjl2125" target= "_blank">Taylor Leong</a></li>
