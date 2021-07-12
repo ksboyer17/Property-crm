@@ -31,7 +31,7 @@ function Landing() {
   };
 
   return (
-    <div>
+    <section className="container">
       <div className="field is-grouped is-grouped-centered" id="Landteg">
         <h1>Bleecker Street Apartments</h1>
       </div>
@@ -81,7 +81,7 @@ function Landing() {
           </button>
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 

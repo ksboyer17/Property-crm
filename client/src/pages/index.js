@@ -8,9 +8,12 @@ import {
 //import Home from "./Home";
 //import Saved from "./Saved";
 import Landing from "./Landing";
-import PmDash from "./PmDash";
-import PmDetail from "./PmDetail";
-import PMCreate from "./PMCreate";
+import Properties from "./Properties";
+import PropertyDetails from "./PropertyDetails";
+import PropertyForm from "./PropertyForm";
+import UnitDetails from "./UnitDetails";
+import UnitForm from "./UnitForm";
+import Signup from "./Signup";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { useAuthContext } from "../utils/AuthContext";
@@ -25,14 +28,19 @@ const PageRouter = () => {
         {!user ? (
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/signup" component={PMCreate} />
+            <Route exact path="/signup" component={Signup} />
             <Redirect from="*" to="/" />
           </Switch>
         ) : (
           <Switch>
             <DashboardProvider>
-              <Route exact path="/" component={PmDash} />
-              <Route exact path="/PmDetail" component={PmDetail} />
+              <Route exact path="/" component={Properties} />
+              <Route exact path="/property/:id" component={PropertyDetails} />
+              <Route exact path="/property/new" component={PropertyForm} />
+              <Route exact path="/property/:id/edit" component={PropertyForm} />
+              <Route exact path="/unit/:id" component={UnitDetails} />
+              <Route exact path="/unit/new" component={UnitForm} />
+              <Route exact path="/unit/:id/edit" component={UnitForm} />
             </DashboardProvider>
           </Switch>
         )}
