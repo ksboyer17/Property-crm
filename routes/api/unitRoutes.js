@@ -1,12 +1,14 @@
 const router = require("express").Router();
-const { Unit, User } = require("../../models");
+const { Unit, Property, User } = require("../../models");
 
-// get a list of properties (that belong to the currently logged in user)
+// get a list of units (that belong to the currently logged in user)
 router.get("/", async (req, res) => {
   try {
     // get the currently logged in user
-    const unit = await Unit.find().populate("units");
+    const unit = await Unit.find({});
+    //console.log(req);
 
+    console.log(unit);
     // return the properties
     res.status(200).json(unit);
   } catch (err) {
@@ -15,13 +17,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get a single property by it's ID
+// get a single unit by it's ID
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
   try {
     // get the property by it's id
-    const unit = await Unit.findOne({ id: id });
-
+    const unit = await Unit.findById(id);
+    console.log(unit);
     // return the property
     res.status(200).json(unit);
   } catch (err) {
@@ -31,25 +33,27 @@ router.get("/:id", async (req, res) => {
 });
 
 // create a new property (that will belong to the currently logged in user)
-router.post("/:id", async (req, res) => {
-  const { user_id } = req.session;
+router.post("/", async (req, res) => {
+  console.log(req);
   try {
     // create a new property and save it to the database
     const unit = new Unit(req.body);
     const unitData = await unit.save();
-
+    console.log(unitData);
     // get the currently logged in user
-    const user = await User.findOne({ _id: user_id });
+    const property = await Property.findOne();
+    console.log(property);
+    const propertyObj = property.toObject();
 
     // update the list of the user's properties to include the newly created one
-    user.unit = [...user.unit, unitData._id];
+    property.units = [...propertyObj.units, unitData._id];
 
     // save the updatedUser to the database
-    const updatedUser = await user.save();
+    const updatedProperty = await property.save();
 
-    console.log(updatedUser);
+    console.log(updatedProperty);
 
-    res.status(200).json(updatedUser);
+    res.status(200).json(updatedProperty);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -58,10 +62,11 @@ router.post("/:id", async (req, res) => {
 
 // update a property
 router.put("/:id", async (req, res) => {
-  const { id } = req.params;
+  const id = req.params.id;
+  console.log(id);
   try {
-    await Unit.findOneAndUpdate({ id: id }, req.body);
-    const updatedUnit = await Unit.findOne({ id: id });
+    await Unit.findByIdAndUpdate(id, req.body);
+    const updatedUnit = await Unit.findById(id);
 
     res.status(200).json(updatedUnit);
   } catch (err) {
@@ -72,10 +77,10 @@ router.put("/:id", async (req, res) => {
 
 // delete a property
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { _id } = req.params;
   try {
     // delete the property by its id
-    await Unit.deleteOne({ id: id });
+    await Unit.deleteOne({ id: _id });
 
     res.status(204).end();
   } catch (err) {

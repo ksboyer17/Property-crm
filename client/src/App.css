@@ -70,7 +70,6 @@ img {
 #addTenats,
 #addUnit,
 #addProperty,
-#deleteProperties,
 #deleteUnit,
 #deleteTenants {
   background-color: gold !important;
@@ -78,6 +77,16 @@ img {
   width: 12rem;
   margin: 2.5rem 0;
   cursor: pointer;
+}
+
+#deleteProperties {
+  background-color: lightcoral;
+  width: 3rem !important;
+}
+
+#PmDetailbtn {
+  width: 52%;
+  border-radius: 20px;
 }
 
 .button:hover,
@@ -166,6 +175,7 @@ i {
 
 #Pm-properties {
   margin: 1rem;
+  width: 65% !important;
 }
 
 #logout,
@@ -176,14 +186,15 @@ i {
 #deleteUnit,
 #deleteTenants {
   position: relative;
-  width: 100% !important;
+  width: 52% !important;
   height: 2.5rem;
   margin-top: 0.5rem;
   border-radius: 20px;
   font-weight: bolder;
 }
 
-#PmDash h2 {
+#PmDash h2,
+#Pm-unit h2 {
   font-size: 1.5rem;
   color: #f1c73b;
   font-weight: bolder;
@@ -198,7 +209,23 @@ i {
   height: 650px;
 }
 
-.add-input {
+.add-property {
   padding: 1rem;
   margin: 0.3rem;
+}
+
+.PmDetail {
+  width: 60% !important;
+}
+
+.PmDetailFunction {
+  position: relative;
+  width: 25%;
+  background-image: url("./assets/Nav-background.png");
+  opacity: 0.7;
+  float: right;
+}
+
+#PmDetail {
+  display: inline;
 }

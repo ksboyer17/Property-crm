@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 function Footer() {
   //let residentData = this.props.residentData;
@@ -12,21 +12,21 @@ function Footer() {
       <div className="footer-icon">
         <div className="social">
           <a href="#">
-            <i class="fab fa-facebook-square fa-3x"></i>
+            <i className="fab fa-facebook-square fa-3x"></i>
           </a>
           <a href="#">
-            <i class="fab fa-linkedin fa-3x"></i>
+            <i className="fab fa-linkedin fa-3x"></i>
           </a>
           <a href="#">
-            <i class="fab fa-github-square fa-3x"></i>
+            <i className="fab fa-github-square fa-3x"></i>
           </a>
           <a href="#">
-            <i class="fab fa-twitter fa-3x"></i>
+            <i className="fab fa-twitter fa-3x"></i>
           </a>
         </div>
       </div>
-      <p class="copyright">Bleecker Street © 2021</p>
-      <ul class="contributors">
+      <p className="copyright">Bleecker Street © 2021</p>
+      <ul className="contributors">
         <li>Contributors:</li>
         <li>Dwayne Piao</li>
         <li>Taylor Leong</li>

@@ -14,9 +14,9 @@ export default {
     return axios.delete("/api/properties/" + id);
   },
   // create
-  postProperties: function ({}) {
-    return axios.post("/api/properties/", {});
-  },
+  // postProperties: function ({}) {
+  //   return axios.post("/api/properties/", {});
+  // },
 
   getUnit: function () {
     return axios.get("/api/units/");
@@ -29,25 +29,9 @@ export default {
   deleteUnit: function (id) {
     return axios.delete("/api/units/" + id);
   },
-  // create
-  postUnit: function ({}) {
-    return axios.post("/api/units/", {});
-  },
 
-  getTenant: function () {
-    return axios.get("/api/tenants/");
-  },
-  // Gets one property
-  getTenantById: function (id) {
-    return axios.get("/api/tenants/" + id);
-  },
-  // Deletes
-  deleteTenant: function (id) {
-    return axios.delete("/api/tenants/" + id);
-  },
-  // create
-  postTenant: function ({}) {
-    return axios.post("/api/tenants/", {});
+  updateUnitByid: function (id) {
+    return axios.put("/api/units/" + id);
   },
 
   checkAuth: function () {
