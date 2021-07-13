@@ -1,25 +1,29 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import API from "../utils/API";
 import logo from "../assets/homeicon.jpg";
 
-export default class Header extends Component {
-  render() {
-    //let residentData = this.props.residentData;
-    return (
-      <React.Fragment>
-        <header className="home navbar is-spaced is-transparent">
+const Header = () => {
+  const logout = async () => {
+    const response = await API.logoutUser();
+  };
+
+  return (
+    <React.Fragment>
+      <header className="home navbar is-spaced is-transparent">
+        <Link to="/">
           <img src={logo} alt="logo" id="logoimg"></img>
-          <nav id="nav-wrap" className="navbar-menu ">
-            <ul id="nav" className="navbar-end ">
-              <li className="current">
-                <a className="smoothscroll navbar-item nav-text" href="home">
-                  <i className="fas fa-home home-icon"></i>
-                  Home
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </React.Fragment>
-    );
-  }
-}
+        </Link>
+        <nav id="nav-wrap" className="navbar-menu ">
+          <ul id="nav" className="nav navbar-end ">
+            <button id="logout" onClick={logout}>
+              Logout
+            </button>
+          </ul>
+        </nav>
+      </header>
+    </React.Fragment>
+  );
+};
+
+export default Header;
