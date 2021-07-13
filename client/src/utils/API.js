@@ -6,11 +6,11 @@ export default {
     return axios.get("/api/properties/");
   },
   // Gets one property
-  getPropertiesById: function (id) {
+  getPropertyById: function (id) {
     return axios.get("/api/properties/" + id);
   },
   // Deletes
-  deleteProperties: function (id) {
+  deleteProperty: function (id) {
     return axios.delete("/api/properties/" + id);
   },
 

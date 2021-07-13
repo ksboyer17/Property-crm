@@ -45,7 +45,6 @@ function Properties() {
   // }
 
   //async function addProperty(event)
-  
 
   // function loadWorkorder() {
   //   API.getWorkorder()
@@ -73,7 +72,7 @@ function Properties() {
           className="properties-data card-content" //add style class here
         >
           {properties.map((item) => (
-            <div key={item.id} className="media-content">
+            <div key={item._id} className="media-content">
               <div className="content">
                 <h2>{item.address}</h2>
                 <p>
@@ -81,7 +80,7 @@ function Properties() {
                 </p>
               </div>
               <Link
-                to={`/property/${item.id}`}
+                to={`/property/${item._id}/details`}
                 className="button is-success"
                 id="PmDetailbtn"
               >
@@ -89,7 +88,6 @@ function Properties() {
               </Link>
             </div>
           ))}
-
         </div>
       </div>
     </section>
