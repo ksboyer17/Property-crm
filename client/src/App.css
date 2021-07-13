@@ -1,13 +1,24 @@
 body {
-  background-image: url("./assets/background.png");
-  background-repeat: repeat;
-  background-size: auto;
-  background-color: black;
   height: 100%;
 }
 
 html {
   height: 100%;
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("./assets/background.png");
+  background-repeat: repeat;
+  background-size: auto;
+  background-color: black;
+  background-attachment: fixed;
+}
+
+.content h2 {
+  color: #d7be69 !important;
 }
 
 .box.prop-info {
@@ -26,6 +37,10 @@ html {
   background-image: url("./assets/Nav-background.png");
   background-size: cover;
   color: #d7be69 !important;
+  justify-content: space-between;
+}
+.navbar-item {
+  margin: 0.5rem;
 }
 
 #nav {
@@ -34,7 +49,6 @@ html {
 }
 
 .nav-text {
-  position: absolute;
   right: 0;
   top: 0;
   float: right;
@@ -91,7 +105,6 @@ img {
 }
 
 #PmDetailbtn {
-  width: 52%;
   border-radius: 20px;
 }
 
@@ -119,8 +132,6 @@ img {
   background-size: cover;
   color: #d7be69 !important;
   padding: 0px;
-  position: absolute;
-  bottom: 0px;
   width: 100%;
   text-align: center;
 }
@@ -187,8 +198,7 @@ i {
   width: 23%;
   height: 300px !important;
   position: relative;
-  background-image: url("./assets/Nav-background.png");
-  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
   justify-items: center;
   display: inline-table;
@@ -230,20 +240,12 @@ i {
   font-weight: bolder;
 }
 
-#Properties h2,
-#Pm-unit h2 {
-  font-size: 1.5rem;
-  color: #f1c73b;
-  font-weight: bolder;
-}
-
 .media-content {
   padding: 1rem;
 }
 
 .card-content {
   overflow: auto;
-  height: 650px;
 }
 
 .add-property {

@@ -13,10 +13,6 @@ export default {
   deleteProperties: function (id) {
     return axios.delete("/api/properties/" + id);
   },
-  // create
-  // postProperties: function ({}) {
-  //   return axios.post("/api/properties/", {});
-  // },
 
   getUnit: function () {
     return axios.get("/api/units/");
@@ -44,5 +40,9 @@ export default {
 
   signupUser: function (info) {
     return axios.post("/api/auth/", info);
+  },
+
+  logoutUser: function () {
+    return axios.post("/api/auth/logout");
   },
 };

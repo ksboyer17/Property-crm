@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import API from "../utils/API";
 
 function PropertyDetails() {
@@ -114,146 +115,141 @@ function PropertyDetails() {
   };
 
   return (
-    <section id="PmDash" className="container">
-      <div>
-        <div className="data-box card" id="Pm-properties">
-          <h1>Properties List</h1>
-          <div
-            className="properties-data card-content" //add style class here
-          >
-            {units.map((item) => (
-              <div key={item.id} className="media-content">
-                <div className="content">
-                  <h2>Unit number: {item.number}</h2>
-                  <p>Unit Rent is: {item.rent}</p>
-                  <p>Tenant First Name: {item.tenant_firstName}</p>
-                  <p>Tenant Last Name: {item.tenant_lastName}</p>
-                  <p>Tenant Phone Number: {item.tenant_phone}</p>
-                  <p>Tenant Lease starts: {item.tenant_leaseDate}</p>
-                  <p>Tenant Lease Duration: {item.tenant_leaseDuration}</p>
-                </div>
-                <button
-                  id="deleteProperties"
-                  type="submit"
-                  onClick={(e) => {
-                    deleteUnit(e);
-                  }}
-                >
-                  Remove Unit
-                </button>
+    <section id="PropertyDetail" className="pageContainer">
+      <div className="data-box card" id="Pm-properties">
+        <div
+          className="properties-data card-content" //add style class here
+        >
+          {units.map((item) => (
+            <div key={item.id} className="media-content">
+              <div className="content">
+                <h2>Unit number: {item.number}</h2>
+                <p>Unit Rent is: {item.rent}</p>
+                <p>Tenant First Name: {item.tenant_firstName}</p>
+                <p>Tenant Last Name: {item.tenant_lastName}</p>
+                <p>Tenant Phone Number: {item.tenant_phone}</p>
+                <p>Tenant Lease starts: {item.tenant_leaseDate}</p>
+                <p>Tenant Lease Duration: {item.tenant_leaseDuration}</p>
               </div>
-            ))}
-          </div>
+              <Link
+                to={`/unit/${item.id}`}
+                className="button is-success"
+                id="PmDetailbtn"
+              >
+                View Details
+              </Link>
+            </div>
+          ))}
         </div>
+      </div>
 
-        <div className="data-box card">
-          <h1>function list</h1>
-          <div
-            id="Pm-tenants"
-            className="card-content" //add style class here
+      <div className="data-box card">
+        <h1>function list</h1>
+        <div
+          id="Pm-tenants"
+          className="card-content" //add style class here
+        >
+          <button id="logout" onClick={logout}>
+            Logout
+          </button>
+
+          <input
+            className="input add-unit"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="Unit Number"
+            name="add-unit-number"
+            id="add-unit-number"
+          ></input>
+          <input
+            className="input add-unit"
+            style={{ width: "400px" }}
+            type="number"
+            placeholder="Unit Rent"
+            name="add-unitRent"
+            id="add-unitRent"
+          ></input>
+          <input
+            className="input add-unit"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="New Tenant Last Name (Option)"
+            name="add-unit-tenant-LastName"
+            id="add-unit-tenant-LastName"
+          ></input>
+          <input
+            className="input add-unit "
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="New Tenant first Name (Option)"
+            name="add-unit-tenant-firstName"
+            id="add-unit-tenant-firstName"
+          ></input>
+          <input
+            className="input add-unit"
+            style={{ width: "400px" }}
+            type="tel"
+            placeholder="New Tenant Phone Number (Option)"
+            name="add-unit-tenant-phone"
+            id="add-unit-tenant-phone"
+          ></input>
+          <input
+            className="input add-unit"
+            style={{ width: "400px" }}
+            type="date"
+            placeholder="New Tenant Lease Starts Date (Option)"
+            name="add-unit-tenant-leaseDate"
+            id="add-unit-tenant-leaseDate"
+          ></input>
+          <input
+            className="input add-unit"
+            style={{ width: "400px" }}
+            type="number"
+            placeholder="New Tenant Lease Duration (Option)"
+            name="add-unit-tenant-leaseDuration"
+            id="add-unit-tenant-leaseDuration"
+          ></input>
+          <button
+            id="addTenats"
+            type="submit"
+            onClick={(e) => {
+              updateUnit(e);
+            }}
           >
-            <button id="logout" onClick={logout}>
-              Logout
-            </button>
+            Update New Unit
+          </button>
 
+          <div>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="text"
-              placeholder="Unit Number"
-              name="add-unit-number"
-              id="add-unit-number"
-            ></input>
-            <input
-              className="input add-unit"
-              style={{ width: "400px" }}
-              type="number"
-              placeholder="Unit Rent"
-              name="add-unitRent"
-              id="add-unitRent"
+              placeholder="New Unit Number"
+              name="add-unit-Unit-Number"
+              id="add-unit-Unit-Number"
             ></input>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="text"
-              placeholder="New Tenant Last Name (Option)"
-              name="add-unit-tenant-LastName"
-              id="add-unit-tenant-LastName"
-            ></input>
-            <input
-              className="input add-unit "
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="New Tenant first Name (Option)"
-              name="add-unit-tenant-firstName"
-              id="add-unit-tenant-firstName"
-            ></input>
-            <input
-              className="input add-unit"
-              style={{ width: "400px" }}
-              type="tel"
-              placeholder="New Tenant Phone Number (Option)"
-              name="add-unit-tenant-phone"
-              id="add-unit-tenant-phone"
-            ></input>
-            <input
-              className="input add-unit"
-              style={{ width: "400px" }}
-              type="date"
-              placeholder="New Tenant Lease Starts Date (Option)"
-              name="add-unit-tenant-leaseDate"
-              id="add-unit-tenant-leaseDate"
-            ></input>
-            <input
-              className="input add-unit"
-              style={{ width: "400px" }}
-              type="number"
-              placeholder="New Tenant Lease Duration (Option)"
-              name="add-unit-tenant-leaseDuration"
-              id="add-unit-tenant-leaseDuration"
+              placeholder="New Unit Rent"
+              name="add-unit-Unit-Rent"
+              id="add-unit-Unit-Rent"
             ></input>
             <button
               id="addTenats"
               type="submit"
               onClick={(e) => {
-                updateUnit(e);
+                addUnit(e);
               }}
             >
-              Update New Unit
+              Create New Unit
             </button>
-
-            <div>
-              <input
-                className="input add-unit"
-                style={{ width: "400px" }}
-                type="text"
-                placeholder="New Unit Number"
-                name="add-unit-Unit-Number"
-                id="add-unit-Unit-Number"
-              ></input>
-              <input
-                className="input add-unit"
-                style={{ width: "400px" }}
-                type="text"
-                placeholder="New Unit Rent"
-                name="add-unit-Unit-Rent"
-                id="add-unit-Unit-Rent"
-              ></input>
-              <button
-                id="addTenats"
-                type="submit"
-                onClick={(e) => {
-                  addUnit(e);
-                }}
-              >
-                Create New Unit
-              </button>
-            </div>
-            {/* 
+          </div>
+          {/* 
             <button id="addUnit">Add New Unit</button>
 
             <button id="addProperty">Add New Properties</button> */}
-          </div>
         </div>
       </div>
     </section>

@@ -66,63 +66,30 @@ function Properties() {
     //loadTenants();
   }, []);
 
-  const logout = async () => {
-    const response = await fetch("/api/auth/logout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
-      document.location.replace("/");
-    } else {
-      alert(response.statusText);
-    }
-  };
-
   return (
-    <section id="Properties" className="container">
-      <div>
-        <div className="data-box card" id="Pm-properties">
-          <h1>Properties List</h1>
-          <div
-            className="properties-data card-content" //add style class here
-          >
-            {properties.map((item) => (
-              <div key={item.id} className="media-content">
-                <div className="content">
-                  <h2>Property address is: {item.address}</h2>
-                  <p>Property City is: {item.city}</p>
-                  <p>State: {item.state}</p>
-                  <p>Zip Code : {item.zip}</p>
-                </div>
-                <Link
-                  to={`/property/${item.id}`}
-                  className="button is-success"
-                  id="PmDetailbtn"
-                >
-                  View Details
-                </Link>
+    <section id="Properties" className="pageContainer">
+      <div className="data-box card" id="Pm-properties">
+        <div
+          className="properties-data card-content" //add style class here
+        >
+          {properties.map((item) => (
+            <div key={item.id} className="media-content">
+              <div className="content">
+                <h2>{item.address}</h2>
+                <p>
+                  {item.city}, {item.state} {item.zip}
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
+              <Link
+                to={`/property/${item.id}`}
+                className="button is-success"
+                id="PmDetailbtn"
+              >
+                View Property Details
+              </Link>
+            </div>
+          ))}
 
-        <div className="data-box card">
-          <h1>Function list</h1>
-          <div
-            id="Pm-tenants"
-            className="card-content" //add style class here
-          >
-            <button id="logout" onClick={logout}>
-              Logout
-            </button>
-
-           
-            {/* 
-            <button id="addUnit">Add New Unit</button>
-
-            <button id="addProperty">Add New Properties</button> */}
-          </div>
         </div>
       </div>
     </section>
