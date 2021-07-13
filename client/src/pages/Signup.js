@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const signupFormHandler = async (event) => {
@@ -96,16 +97,16 @@ function Signup() {
                     />
                   </div>
                 </div>
-
-                <button
-                  class="button"
-                  id="dashboard-link"
-                  onClick={signupFormHandler}
-                >
-                  Sign up and login
-                  {/* Link to PM Dashboard page */}
-                </button>
-
+                <Link to="/properties">
+                  <button
+                    class="button"
+                    id="dashboard-link"
+                    onClick={signupFormHandler}
+                  >
+                    Sign up and login
+                    {/* Link to PM Dashboard page */}
+                  </button>
+                </Link>
                 {/* <button class="button is-primary">Sign in</button> */}
               </form>
             </div>

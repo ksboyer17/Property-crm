@@ -102,7 +102,7 @@ const UnitForm = () => {
               className="input add-unit"
               style={{ width: "400px" }}
               type="text"
-              placeholder="New Tenant Last Name (Option)"
+              placeholder="New Tenant Last Name"
               name="add-unit-tenant-LastName"
               id="add-unit-tenant-LastName"
             ></input>
@@ -110,7 +110,7 @@ const UnitForm = () => {
               className="input add-unit "
               style={{ width: "400px" }}
               type="text"
-              placeholder="New Tenant first Name (Option)"
+              placeholder="New Tenant first Name"
               name="add-unit-tenant-firstName"
               id="add-unit-tenant-firstName"
             ></input>
@@ -118,7 +118,7 @@ const UnitForm = () => {
               className="input add-unit"
               style={{ width: "400px" }}
               type="tel"
-              placeholder="New Tenant Phone Number (Option)"
+              placeholder="New Tenant Phone Number"
               name="add-unit-tenant-phone"
               id="add-unit-tenant-phone"
             ></input>
@@ -126,7 +126,7 @@ const UnitForm = () => {
               className="input add-unit"
               style={{ width: "400px" }}
               type="date"
-              placeholder="New Tenant Lease Starts Date (Option)"
+              placeholder="New Tenant Lease Starts Date"
               name="add-unit-tenant-leaseDate"
               id="add-unit-tenant-leaseDate"
             ></input>
@@ -134,7 +134,7 @@ const UnitForm = () => {
               className="input add-unit"
               style={{ width: "400px" }}
               type="number"
-              placeholder="New Tenant Lease Duration (Option)"
+              placeholder="New Tenant Lease Duration"
               name="add-unit-tenant-leaseDuration"
               id="add-unit-tenant-leaseDuration"
             ></input>
