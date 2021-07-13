@@ -1,138 +1,119 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import API from "../utils/API";
 
 function PropertyDetails() {
-  const [units, setUnits] = useState([]);
+  const history = useHistory();
+  const { id } = useParams();
+  const [property, setProperty] = useState(null);
 
-  function loadUnits() {
-    API.getUnit()
-      .then((res) => {
-        console.log("this is unit: ", res);
-        setUnits(res.data);
-      })
-      .catch((err) => console.log(err));
-  }
+  const getProperty = async () => {
+    try {
+      const response = await API.getPropertyById(id);
+      setProperty(response.data);
+    } catch (err) {
+      alert("There was an issue with your request.");
+    }
+  };
 
-  function deleteUnit(id) {
-    API.deleteUnit(id)
-      .then((res) => loadUnits())
-      .catch((err) => console.log(err));
-  }
+  const handleDelete = async () => {
+    try {
+      await API.deleteProperty(id);
+      history.push("/");
+    } catch (err) {
+      alert("There was an issue with your request.");
+    }
+  };
+
+  const buildLeaseEndDate = (date) => {
+    const startDate = new Date(date);
+    const day = startDate.getDate();
+    const month = startDate.getMonth();
+    const year = startDate.getFullYear() + 1;
+    return new Date(year, month, day).toLocaleDateString("en-us");
+  };
 
   useEffect(() => {
-    loadUnits();
+    getProperty();
   }, []);
 
-  function refresh() {
-    window.location.reload();
+  if (!property) {
+    return (
+      <section id="PropertyDetail" className="pageContainer">
+        <div className="data-box card" id="Pm-properties">
+          <div
+            className="properties-data card-content" //add style class here
+          >
+            Loading....
+          </div>
+        </div>
+      </section>
+    );
   }
 
-  const logout = async () => {
-    const response = await fetch("/api/auth/logout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
-      document.location.replace("/");
-    } else {
-      alert(response.statusText);
-    }
-  };
-
-  const updateUnit = async function (e) {
-    e.preventDefault();
-    const number = document.querySelector("#add-unit-number").value.trim();
-    const rent = document.querySelector("#add-unitRent").value.trim();
-    const tenant_firstName = document
-      .querySelector("#add-unit-tenant-LastName")
-      .value.trim();
-    const tenant_lastName = document
-      .querySelector("#add-unit-tenant-firstName")
-      .value.trim();
-    const tenant_phone = document
-      .querySelector("#add-unit-tenant-phone")
-      .value.trim();
-    const tenant_leaseDate = document
-      .querySelector("#add-unit-tenant-leaseDate")
-      .value.trim();
-    const tenant_leaseDuration = document
-      .querySelector("#add-unit-tenant-leaseDuration")
-      .value.trim();
-
-    if (
-      number &&
-      rent &&
-      tenant_firstName &&
-      tenant_lastName &&
-      tenant_phone &&
-      tenant_leaseDate &&
-      tenant_leaseDuration
-    ) {
-      const filter = { number: number };
-
-      //how? base on user input Unit number to find the correct Unit to update
-      {
-        API.updateUnitByid(units._id, {
-          number,
-          rent,
-          tenant_firstName,
-          tenant_lastName,
-          tenant_phone,
-          tenant_leaseDate,
-          tenant_leaseDuration,
-        })
-          .then((res) => {
-            setUnits(res.data);
-          })
-          .catch((err) => console.log(err));
-      }
-    }
-  };
-
-  const addUnit = async function (e) {
-    e.preventDefault();
-    const number = document.querySelector("#add-unit-Unit-Number").value.trim();
-    const rent = document.querySelector("#add-unit-Unit-Rent").value.trim();
-
-    if (number && rent) {
-      let response = await fetch("/api/units", {
-        method: "POST",
-        body: JSON.stringify({
-          number,
-          rent,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      response = await response.json();
-
-      console.log("******", response);
-      return response;
-    } else {
-      console.log("NO data received");
-    }
-  };
-
   return (
-    <section id="PropertyDetail" className="pageContainer">
+    <section id="PropertyDetails" className="pageContainer">
+      <div className="data-box card" id="Pm-properties">
+        <div
+          className="card-content" //add style class here
+        >
+          <div className="media-content">
+            <div className="content">
+              <h2>{property.address}</h2>
+              <p>
+                {property.city}, {property.state} {property.zip}
+              </p>
+
+              <Link
+                to={`/property/${property._id}/edit`}
+                className="button"
+                id="PmDetailbtn"
+              >
+                Edit Property
+              </Link>
+              <button
+                className="button"
+                id="PmDetailbtn"
+                onClick={handleDelete}
+              >
+                Delete Property
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="data-box card" id="Pm-properties">
         <div
           className="properties-data card-content" //add style class here
         >
-          {units.map((item) => (
-            <div key={item.id} className="media-content">
+          {property.units.map((item) => (
+            <div key={item._id} className="media-content">
               <div className="content">
-                <h2>Unit number: {item.number}</h2>
-                <p>Unit Rent is: {item.rent}</p>
-                <p>Tenant First Name: {item.tenant_firstName}</p>
-                <p>Tenant Last Name: {item.tenant_lastName}</p>
-                <p>Tenant Phone Number: {item.tenant_phone}</p>
-                <p>Tenant Lease starts: {item.tenant_leaseDate}</p>
-                <p>Tenant Lease Duration: {item.tenant_leaseDuration}</p>
+                <h2>Units</h2>
+
+                <Link to={`/unit/new`}>Add Unit</Link>
+              </div>
+              <div className="content">
+                <p>Unit number: {item.number}</p>
+                <p>
+                  Rent: $
+                  {parseInt(item.rent).toLocaleString("en-us", {
+                    currency: "USD",
+                  })}
+                </p>
+                <p>
+                  Tenant: {item.tenant_firstName} {item.tenant_lastName}
+                </p>
+                <p>Phone: {item.tenant_phone}</p>
+                <p>
+                  Lease:{" "}
+                  {new Date(item.tenant_leaseDate).toLocaleDateString("en-us")}
+                  {buildLeaseEndDate(item.tenant_leaseDate)}- {}
+                </p>
               </div>
               <Link
-                to={`/unit/${item.id}`}
+                to={`/unit/${item._id}/details`}
                 className="button is-success"
                 id="PmDetailbtn"
               >
@@ -140,116 +121,6 @@ function PropertyDetails() {
               </Link>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div className="data-box card">
-        <h1>function list</h1>
-        <div
-          id="Pm-tenants"
-          className="card-content" //add style class here
-        >
-          <button id="logout" onClick={logout}>
-            Logout
-          </button>
-
-          <input
-            className="input add-unit"
-            style={{ width: "400px" }}
-            type="text"
-            placeholder="Unit Number"
-            name="add-unit-number"
-            id="add-unit-number"
-          ></input>
-          <input
-            className="input add-unit"
-            style={{ width: "400px" }}
-            type="number"
-            placeholder="Unit Rent"
-            name="add-unitRent"
-            id="add-unitRent"
-          ></input>
-          <input
-            className="input add-unit"
-            style={{ width: "400px" }}
-            type="text"
-            placeholder="New Tenant Last Name (Option)"
-            name="add-unit-tenant-LastName"
-            id="add-unit-tenant-LastName"
-          ></input>
-          <input
-            className="input add-unit "
-            style={{ width: "400px" }}
-            type="text"
-            placeholder="New Tenant first Name (Option)"
-            name="add-unit-tenant-firstName"
-            id="add-unit-tenant-firstName"
-          ></input>
-          <input
-            className="input add-unit"
-            style={{ width: "400px" }}
-            type="tel"
-            placeholder="New Tenant Phone Number (Option)"
-            name="add-unit-tenant-phone"
-            id="add-unit-tenant-phone"
-          ></input>
-          <input
-            className="input add-unit"
-            style={{ width: "400px" }}
-            type="date"
-            placeholder="New Tenant Lease Starts Date (Option)"
-            name="add-unit-tenant-leaseDate"
-            id="add-unit-tenant-leaseDate"
-          ></input>
-          <input
-            className="input add-unit"
-            style={{ width: "400px" }}
-            type="number"
-            placeholder="New Tenant Lease Duration (Option)"
-            name="add-unit-tenant-leaseDuration"
-            id="add-unit-tenant-leaseDuration"
-          ></input>
-          <button
-            id="addTenats"
-            type="submit"
-            onClick={(e) => {
-              updateUnit(e);
-            }}
-          >
-            Update New Unit
-          </button>
-
-          <div>
-            <input
-              className="input add-unit"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="New Unit Number"
-              name="add-unit-Unit-Number"
-              id="add-unit-Unit-Number"
-            ></input>
-            <input
-              className="input add-unit"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="New Unit Rent"
-              name="add-unit-Unit-Rent"
-              id="add-unit-Unit-Rent"
-            ></input>
-            <button
-              id="addTenats"
-              type="submit"
-              onClick={(e) => {
-                addUnit(e);
-              }}
-            >
-              Create New Unit
-            </button>
-          </div>
-          {/* 
-            <button id="addUnit">Add New Unit</button>
-
-            <button id="addProperty">Add New Properties</button> */}
         </div>
       </div>
     </section>

@@ -1,12 +1,20 @@
-body {
-  height: 100%;
-}
-
+body,
 html {
   height: 100%;
 }
 
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
 .pageContainer {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,6 +113,8 @@ img {
 }
 
 #PmDetailbtn {
+  display: block;
+  margin: 2.5rem auto 0;
   border-radius: 20px;
 }
 
@@ -182,10 +192,8 @@ i {
 
 .data-box-create {
   width: auto;
-  height: 300px !important;
   position: relative;
-  background-image: url("./assets/Nav-background.png");
-  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
   justify-items: center;
   display: inline-table;
@@ -196,7 +204,6 @@ i {
 .data-box {
   color: white;
   width: 23%;
-  height: 300px !important;
   position: relative;
   background-color: rgba(0, 0, 0, 0.6);
   text-align: center;

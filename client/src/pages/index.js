@@ -24,7 +24,7 @@ const PageRouter = () => {
   return (
     <Router>
       <Header />
-      <div>
+      <main>
         {!user ? (
           <Switch>
             <Route exact path="/" component={Landing} />
@@ -35,16 +35,20 @@ const PageRouter = () => {
           <Switch>
             <DashboardProvider>
               <Route exact path="/" component={Properties} />
-              <Route exact path="/property/:id" component={PropertyDetails} />
+              <Route
+                exact
+                path="/property/:id/details"
+                component={PropertyDetails}
+              />
               <Route exact path="/property/new" component={PropertyForm} />
               <Route exact path="/property/:id/edit" component={PropertyForm} />
-              <Route exact path="/unit/:id" component={UnitDetails} />
+              <Route exact path="/unit/:id/details" component={UnitDetails} />
               <Route exact path="/unit/new" component={UnitForm} />
               <Route exact path="/unit/:id/edit" component={UnitForm} />
             </DashboardProvider>
           </Switch>
         )}
-      </div>
+      </main>
       <Footer />
     </Router>
   );
