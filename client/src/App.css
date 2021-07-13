@@ -247,6 +247,18 @@ i {
   font-weight: bolder;
 }
 
+.prop-info {
+  width: 25rem;
+  color: #d7be69;
+}
+
+#firstName-signup,
+#lastName-signup,
+#password-signup,
+#email-signup {
+  width: 20rem;
+}
+
 .media-content {
   padding: 1rem;
 }
