@@ -32,7 +32,7 @@ const PropertyForm = () => {
 
   return (
     <section className="pageContainer">
-      <div className="data-box card">
+      <div className="data-box card" id="Pm-properties">
         <form>
           <h3>Edit your prorperty</h3>
           <label>
