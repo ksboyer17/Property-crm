@@ -29,15 +29,14 @@ function Signup() {
   };
 
   return (
-    <section className="container">
+    <section className="pageContainer">
       <div className="PMContainer">
         <div class="PmDash data-box-create" id="PmDash">
           <div className="columns">
             {" "}
             {/* the columns class will make all of the columns inside equal width */}
             <div className="column">
-              {/*Property Basic Info Container, still need to work on  */}
-              <div className="box prop-info">
+              <div className=" prop-info">
                 <p className="info-start">Main Office Address: </p>
                 <p>43 West 32nd street</p>
                 <p className="info-start">Support Hours:</p>
@@ -49,7 +48,7 @@ function Signup() {
               </div>
             </div>
             <div className="column">
-              <form className="box user-info">
+              <form className=" prop-info">
                 <div class="field">
                   <label class="label">First Name</label>
                   <div class="control">

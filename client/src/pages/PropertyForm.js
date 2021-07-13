@@ -34,9 +34,8 @@ const PropertyForm = () => {
     <section className="pageContainer">
       <div className="data-box card">
         <form>
+          <h3>Edit your prorperty</h3>
           <label>
-            Name:
-            <input type="text" name="name" />
             <input
               className="input add-property"
               style={{ width: "400px" }}
