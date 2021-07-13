@@ -45,34 +45,7 @@ function Properties() {
   // }
 
   //async function addProperty(event)
-  const addProperty = async function (e) {
-    e.preventDefault();
-    const address = document
-      .querySelector("#add-property-address")
-      .value.trim();
-    const city = document.querySelector("#add-city").value.trim();
-    const state = document.querySelector("#add-state").value.trim();
-    const zip = document.querySelector("#add-zip").value.trim();
-
-    if (address && city && state && zip) {
-      let response = await fetch("/api/properties", {
-        method: "POST",
-        body: JSON.stringify({
-          address,
-          city,
-          state,
-          zip,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      response = await response.json();
-
-      console.log("******", response);
-      return response;
-    } else {
-      console.log("NO data received");
-    }
-  };
+  
 
   // function loadWorkorder() {
   //   API.getWorkorder()
@@ -116,6 +89,7 @@ function Properties() {
               </Link>
             </div>
           ))}
+
         </div>
       </div>
     </section>
