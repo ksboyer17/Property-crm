@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory, useLocation } from "react-router-dom";
 import API from "../utils/API";
 
 function UnitDetails() {
   const { id } = useParams();
   const history = useHistory();
   const [unit, setUnit] = useState([]);
+  const { state: navigationState } = useLocation();
 
   const getUnit = async () => {
     try {
@@ -27,8 +28,9 @@ function UnitDetails() {
   const handleDelete = async () => {
     try {
       await API.deleteUnit(id);
-      history.push("/");
+      history.push(`/property/${navigationState.propertyId}/details`);
     } catch (err) {
+      console.log(err);
       alert("There was an issue with your request.");
     }
   };
@@ -69,18 +71,29 @@ function UnitDetails() {
                   currency: "USD",
                 })}
               </p>
-              <p>
-                Tenant: {unit.tenant_firstName} {unit.tenant_lastName}
-              </p>
-              <p>Phone: {unit.tenant_phone}</p>
-              <p>
-                Lease:{" "}
-                {new Date(unit.tenant_leaseDate).toLocaleDateString("en-us")}
-                {buildLeaseEndDate(unit.tenant_leaseDate)}- {}
-              </p>
-
+              {unit.tenant_firstName &&
+              unit.tenant_lastName &&
+              unit.tenant_leaseDate &&
+              unit.tenant_phone &&
+              unit.tenant_leaseDuration ? (
+                <>
+                  <p>
+                    Tenant: {unit.tenant_firstName} {unit.tenant_lastName}
+                  </p>
+                  <p>Phone: {unit.tenant_phone}</p>
+                  <p>
+                    Lease:{" "}
+                    {`${new Date(unit.tenant_leaseDate).toLocaleDateString(
+                      "en-us"
+                    )} - ${buildLeaseEndDate(unit.tenant_leaseDate)}`}
+                  </p>
+                </>
+              ) : null}
               <Link
-                to={`/unit/${unit._id}/edit`}
+                to={{
+                  pathname: `/unit/${unit._id}/edit`,
+                  state: { ...navigationState, unit },
+                }}
                 className="button"
                 id="PmDetailbtn"
               >

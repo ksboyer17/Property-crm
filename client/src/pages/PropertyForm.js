@@ -1,32 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams, useLocation } from "react-router";
+import API from "../utils/API";
 
 const PropertyForm = () => {
+  const history = useHistory();
+  const { id } = useParams();
+  const { state: navigationState } = useLocation();
+
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  useEffect(() => {
+    if (id && navigationState.property) {
+      setFormData(navigationState.property);
+    }
+  }, [navigationState, id]);
+
   const addProperty = async function (e) {
     e.preventDefault();
-    const address = document
-      .querySelector("#add-property-address")
-      .value.trim();
-    const city = document.querySelector("#add-city").value.trim();
-    const state = document.querySelector("#add-state").value.trim();
-    const zip = document.querySelector("#add-zip").value.trim();
+    const { address, state, city, zip } = formData;
 
     if (address && city && state && zip) {
-      let response = await fetch("/api/properties", {
-        method: "POST",
-        body: JSON.stringify({
+      try {
+        await API.createProperty({
           address,
           city,
           state,
           zip,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      response = await response.json();
-
-      console.log("******", response);
-      return response;
+        });
+        history.push(`/`);
+      } catch (err) {
+        console.log(err);
+        alert("Unable to add property. Please try again!");
+      }
     } else {
       console.log("NO data received");
+    }
+  };
+
+  const updateProperty = async function (e) {
+    e.preventDefault();
+    const { address, state, city, zip, _id } = formData;
+
+    if (_id && address && city && state && zip) {
+      try {
+        await API.updateProperty(navigationState.property._id, {
+          _id,
+          address,
+          city,
+          state,
+          zip,
+        });
+        history.push(`/property/${navigationState.property._id}/details`);
+      } catch (err) {
+        console.log(err);
+        alert("Unable to add property. Please try again!");
+      }
+    } else {
+      console.log("All fields are required");
     }
   };
 
@@ -35,50 +70,55 @@ const PropertyForm = () => {
       <div className="data-box card" id="Pm-properties">
         <form>
           <h3>Edit your prorperty</h3>
-          <label>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="Add Address"
-              name="add-property-address"
-              id="add-property-address"
-            ></input>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="City Name"
-              name="add-city"
-              id="add-city"
-            ></input>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="State"
-              name="add-state"
-              id="add-state"
-            ></input>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="Zip Code"
-              name="add-zip"
-              id="add-zip"
-            ></input>
-            <button
-              id="addTenats"
-              type="submit"
-              onClick={(e) => {
-                addProperty(e);
-                // refresh();
-              }}
-            >
+          <input
+            className="input add-property"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="Add Address"
+            name="address"
+            id="add-property-address"
+            value={formData.address || ""}
+            onChange={handleChange}
+          ></input>
+          <input
+            className="input add-property"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="City Name"
+            name="city"
+            id="add-city"
+            value={formData.city || ""}
+            onChange={handleChange}
+          ></input>
+          <input
+            className="input add-property"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="State"
+            name="state"
+            id="add-state"
+            value={formData.state || ""}
+            onChange={handleChange}
+          ></input>
+          <input
+            className="input add-property"
+            style={{ width: "400px" }}
+            type="text"
+            placeholder="Zip Code"
+            name="zip"
+            id="add-zip"
+            value={formData.zip || ""}
+            onChange={handleChange}
+          ></input>
+          {id ? (
+            <button id="addTenats" type="submit" onClick={updateProperty}>
+              Update property
+            </button>
+          ) : (
+            <button id="addTenats" type="submit" onClick={addProperty}>
               Add New property
             </button>
-          </label>
+          )}
         </form>
       </div>
     </section>

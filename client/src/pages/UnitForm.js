@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import API from "../utils/API";
+import { useHistory, useLocation } from "react-router";
 
 const UnitForm = () => {
+  const history = useHistory();
   const { id } = useParams();
+  const { state: navigationState } = useLocation();
+
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  useEffect(() => {
+    if (id && navigationState.unit) {
+      setFormData(navigationState.unit);
+    }
+  }, [navigationState, id]);
 
   const updateUnit = async function (e) {
     e.preventDefault();
-    const number = document.querySelector("#add-unit-number").value.trim();
-    const rent = document.querySelector("#add-unitRent").value.trim();
-    const tenant_firstName = document
-      .querySelector("#add-unit-tenant-LastName")
-      .value.trim();
-    const tenant_lastName = document
-      .querySelector("#add-unit-tenant-firstName")
-      .value.trim();
-    const tenant_phone = document
-      .querySelector("#add-unit-tenant-phone")
-      .value.trim();
-    const tenant_leaseDate = document
-      .querySelector("#add-unit-tenant-leaseDate")
-      .value.trim();
-    const tenant_leaseDuration = document
-      .querySelector("#add-unit-tenant-leaseDuration")
-      .value.trim();
+    const {
+      number,
+      rent,
+      tenant_firstName,
+      tenant_lastName,
+      tenant_phone,
+      tenant_leaseDate,
+      tenant_leaseDuration,
+      _id,
+    } = formData;
 
     if (
       number &&
@@ -32,13 +41,12 @@ const UnitForm = () => {
       tenant_lastName &&
       tenant_phone &&
       tenant_leaseDate &&
-      tenant_leaseDuration
+      tenant_leaseDuration &&
+      _id
     ) {
-      const filter = { number: number };
-
-      //how? base on user input Unit number to find the correct Unit to update
-      {
-        API.updateUnitByid(id, {
+      try {
+        await API.updateUnit(_id, {
+          _id,
           number,
           rent,
           tenant_firstName,
@@ -46,12 +54,14 @@ const UnitForm = () => {
           tenant_phone,
           tenant_leaseDate,
           tenant_leaseDuration,
-        })
-          .then((res) => {
-            // handle
-          })
-          .catch((err) => console.log(err));
+        });
+        history.push(`/property/${navigationState.propertyId}/details`);
+      } catch (err) {
+        console.log(err);
+        alert("Unable to add property. Please try again!");
       }
+    } else {
+      console.log("All fields are required");
     }
   };
 
@@ -61,24 +71,24 @@ const UnitForm = () => {
     const rent = document.querySelector("#add-unit-Unit-Rent").value.trim();
 
     if (number && rent) {
-      let response = await fetch("/api/units", {
-        method: "POST",
-        body: JSON.stringify({
+      try {
+        await API.createUnit(navigationState.propertyId, {
           number,
           rent,
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-      response = await response.json();
-
-      console.log("******", response);
-      return response;
+        });
+        history.push(`/property/${navigationState.propertyId}/details`); //how could back to the property detail (/property/:id/detail?)
+      } catch (err) {
+        console.log(err);
+        alert("Unable to add unit. Please try again!");
+      }
     } else {
       console.log("NO data received");
     }
   };
+
   return (
     <section className="pageContainer">
+      {console.log(navigationState)}
       <div className="data-box card">
         {id ? (
           <form>
@@ -87,56 +97,70 @@ const UnitForm = () => {
               style={{ width: "400px" }}
               type="text"
               placeholder="Unit Number"
-              name="add-unit-number"
+              name="number"
               id="add-unit-number"
+              value={formData.number || ""}
+              onChange={handleChange}
             ></input>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="number"
               placeholder="Unit Rent"
-              name="add-unitRent"
+              name="rent"
               id="add-unitRent"
+              value={formData.rent || ""}
+              onChange={handleChange}
             ></input>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="text"
               placeholder="New Tenant Last Name"
-              name="add-unit-tenant-LastName"
+              name="tenant_lastName"
               id="add-unit-tenant-LastName"
+              value={formData.tenant_lastName || ""}
+              onChange={handleChange}
             ></input>
             <input
               className="input add-unit "
               style={{ width: "400px" }}
               type="text"
               placeholder="New Tenant first Name"
-              name="add-unit-tenant-firstName"
+              name="tenant_firstName"
               id="add-unit-tenant-firstName"
+              value={formData.tenant_firstName || ""}
+              onChange={handleChange}
             ></input>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="tel"
               placeholder="New Tenant Phone Number"
-              name="add-unit-tenant-phone"
+              name="tenant_phone"
               id="add-unit-tenant-phone"
+              value={formData.tenant_phone || ""}
+              onChange={handleChange}
             ></input>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="date"
               placeholder="New Tenant Lease Starts Date"
-              name="add-unit-tenant-leaseDate"
+              name="tenant_leaseDate"
               id="add-unit-tenant-leaseDate"
+              value={formData.tenant_leaseDate || ""}
+              onChange={handleChange}
             ></input>
             <input
               className="input add-unit"
               style={{ width: "400px" }}
               type="number"
               placeholder="New Tenant Lease Duration"
-              name="add-unit-tenant-leaseDuration"
+              name="tenant_leaseDuration"
               id="add-unit-tenant-leaseDuration"
+              value={formData.tenant_leaseDuration || ""}
+              onChange={handleChange}
             ></input>
             <button
               id="addTenats"
@@ -145,7 +169,7 @@ const UnitForm = () => {
                 updateUnit(e);
               }}
             >
-              Update New Unit
+              Update Unit
             </button>
           </form>
         ) : (

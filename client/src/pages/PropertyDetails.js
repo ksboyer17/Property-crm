@@ -5,6 +5,7 @@ import API from "../utils/API";
 function PropertyDetails() {
   const history = useHistory();
   const { id } = useParams();
+
   const [property, setProperty] = useState(null);
 
   const getProperty = async () => {
@@ -21,6 +22,7 @@ function PropertyDetails() {
       await API.deleteProperty(id);
       history.push("/");
     } catch (err) {
+      console.log(err);
       alert("There was an issue with your request.");
     }
   };
@@ -65,7 +67,10 @@ function PropertyDetails() {
               </p>
 
               <Link
-                to={`/property/${property._id}/edit`}
+                to={{
+                  pathname: `/property/${property._id}/edit`,
+                  state: { property },
+                }}
                 className="button"
                 id="PmDetailbtn"
               >
@@ -81,48 +86,84 @@ function PropertyDetails() {
             </div>
           </div>
         </div>
+        {console.log(property)}
       </div>
 
-      <div className="data-box card" id="Pm-properties">
-        <div
-          className="properties-data card-content" //add style class here
-        >
-          {property.units.map((item) => (
-            <div key={item._id} className="media-content">
-              <div className="content">
-                <h2>Units</h2>
+      {property.units.length ? (
+        <div className="data-box card" id="Pm-properties">
+          <div
+            className="properties-data card-content" //add style class here
+          >
+            {property.units.map((item) => (
+              <div key={item._id} className="media-content">
+                <div className="content">
+                  <h2>Units</h2>
 
-                <Link to={`/unit/new`}>Add Unit</Link>
+                  <Link
+                    to={{ pathname: `/unit/new`, state: { propertyId: id } }}
+                  >
+                    Add Unit
+                  </Link>
+                </div>
+                <div className="content">
+                  <p>Unit number: {item.number}</p>
+                  <p>
+                    Rent: $
+                    {parseInt(item.rent).toLocaleString("en-us", {
+                      currency: "USD",
+                    })}
+                  </p>
+                  {item.tenant_leaseDate ? (
+                    <>
+                      <p>
+                        Tenant: {item.tenant_firstName} {item.tenant_lastName}
+                      </p>
+                      <p>Phone: {item.tenant_phone}</p>
+                      <p>
+                        Lease:{" "}
+                        {new Date(item.tenant_leaseDate).toLocaleDateString(
+                          "en-us"
+                        )}
+                        {buildLeaseEndDate(item.tenant_leaseDate)}- {}
+                      </p>
+                    </>
+                  ) : null}
+                </div>
+                <Link
+                  to={{
+                    pathname: `/unit/${item._id}/details`,
+                    state: { unit: item, propertyId: id },
+                  }}
+                  className="button is-success"
+                  id="PmDetailbtn"
+                >
+                  Manage Unit
+                </Link>
               </div>
-              <div className="content">
-                <p>Unit number: {item.number}</p>
-                <p>
-                  Rent: $
-                  {parseInt(item.rent).toLocaleString("en-us", {
-                    currency: "USD",
-                  })}
-                </p>
-                <p>
-                  Tenant: {item.tenant_firstName} {item.tenant_lastName}
-                </p>
-                <p>Phone: {item.tenant_phone}</p>
-                <p>
-                  Lease:{" "}
-                  {new Date(item.tenant_leaseDate).toLocaleDateString("en-us")}
-                  {buildLeaseEndDate(item.tenant_leaseDate)}- {}
-                </p>
-              </div>
-              <Link
-                to={`/unit/${item._id}/details`}
-                className="button is-success"
-                id="PmDetailbtn"
-              >
-                View Details
-              </Link>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="data-box card" id="Pm-properties">
+          <div
+            className="card-content" //add style class here
+          >
+            <div className="media-content">
+              <div className="content">
+                <h2>Add Unit</h2>
+
+                <Link
+                  to={{ pathname: `/unit/new`, state: { propertyId: id } }}
+                  className="button"
+                  id="PmDetailbtn"
+                >
+                  Add Unit
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
