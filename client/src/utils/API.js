@@ -13,6 +13,12 @@ export default {
   deleteProperty: function (id) {
     return axios.delete("/api/properties/" + id);
   },
+  createProperty: function (data) {
+    return axios.post("/api/properties", data);
+  },
+  updateProperty: function (id, data) {
+    return axios.put(`/api/properties/${id}`, data);
+  },
 
   getUnit: function () {
     return axios.get("/api/units/");
@@ -24,6 +30,12 @@ export default {
   // Deletes
   deleteUnit: function (id) {
     return axios.delete("/api/units/" + id);
+  },
+  createUnit: function (id, data) {
+    return axios.post(`/api/properties/${id}/unit`, data);
+  },
+  updateUnit: function (id, data) {
+    return axios.put(`/api/units/${id}`, data);
   },
 
   updateUnitByid: function (id) {

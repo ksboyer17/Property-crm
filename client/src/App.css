@@ -38,6 +38,13 @@ main {
   font-weight: 700;
 }
 
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
 .home,
 .home-icon,
 .nav-text,
@@ -232,7 +239,13 @@ i {
   width: 65% !important;
 }
 
-#logout,
+#logout {
+  height: 2.5rem;
+  width: auto;
+  margin: 0;
+  border-radius: 20px;
+  font-weight: bolder;
+}
 #addTenats,
 #addUnit,
 #addProperty,

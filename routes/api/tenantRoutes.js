@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // get the property by it's id
-    const tenant = await Tenant.findOne({ id: id });
+    const tenant = await Tenant.findById(id);
 
     // return the property
     res.status(200).json(tenant);
@@ -52,10 +52,9 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await Unit.findOneAndUpdate({ id: id }, req.body);
-    const updatedUnit = await Unit.findOne({ id: id });
+    await Unit.findOneAndUpdate({ _id: id }, req.body);
 
-    res.status(200).json(updatedUnit);
+    res.status(200).end();
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -64,10 +63,10 @@ router.put("/:id", async (req, res) => {
 
 // delete a
 router.delete("/:id", async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
   try {
     // delete by its id
-    await Tenant.deleteOne({ id: _id });
+    await Tenant.deleteOne({ _id: id });
 
     res.status(204).end();
   } catch (err) {

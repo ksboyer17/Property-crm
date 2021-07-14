@@ -40,8 +40,8 @@ const AuthProvider = ({ value = { user: null }, ...props }) => {
   useEffect(() => {
     (async () => {
       try {
-        const user = await API.checkAuth();
-        login(user);
+        const response = await API.checkAuth();
+        login(response.data);
       } catch (err) {
         return;
       }

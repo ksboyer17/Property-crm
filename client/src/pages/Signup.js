@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../utils/AuthContext";
 
 function Signup() {
+  const { login } = useAuthContext();
   const signupFormHandler = async (event) => {
     event.preventDefault();
 
@@ -11,20 +13,18 @@ function Signup() {
     const password = document.querySelector("#password-signup").value.trim();
 
     if (firstName && lastName && email && password) {
-      let response = await fetch("/api/auth", {
-        method: "POST",
-        body: JSON.stringify({ firstName, lastName, email, password }),
-        headers: { "Content-Type": "application/json" },
-      });
+      try {
+        let response = await fetch("/api/auth", {
+          method: "POST",
+          body: JSON.stringify({ firstName, lastName, email, password }),
+          headers: { "Content-Type": "application/json" },
+        });
 
-      response = await response.json();
+        response = await response.json();
 
-      console.log("******", response);
-
-      if (response.id) {
-        document.location.replace("/PmDash");
-      } else {
-        alert(response.message ? response.message : response.name); //mongo error report and request err report
+        login(response.data);
+      } catch (err) {
+        alert("Unable to create account. Please try again."); //mongo error report and request err report
       }
     }
   };

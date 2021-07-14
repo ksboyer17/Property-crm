@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../utils/AuthContext";
 
 function Properties() {
+  const { user } = useAuthContext();
   const [properties, setProperties] = useState([]);
   // const [units, setUnits] = useState([]);
   // const [tenants, setTenants] = useState([]);
@@ -62,77 +64,48 @@ function Properties() {
   return (
     <section id="Properties" className="pageContainer">
       <div className="data-box card" id="Pm-properties">
-        <form>
-          <h3>Edit your prorperty</h3>
-          <label>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="Add Address"
-              name="add-property-address"
-              id="add-property-address"
-            ></input>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="City Name"
-              name="add-city"
-              id="add-city"
-            ></input>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="State"
-              name="add-state"
-              id="add-state"
-            ></input>
-            <input
-              className="input add-property"
-              style={{ width: "400px" }}
-              type="text"
-              placeholder="Zip Code"
-              name="add-zip"
-              id="add-zip"
-            ></input>
-            <button
-              id="addTenats"
-              type="submit"
-              onClick={(e) => {
-                addProperty(e);
-                // refresh();
-              }}
-            >
-              Add New property
-            </button>
-          </label>
-        </form>
-      </div>
-      <div className="data-box card" id="Pm-properties">
         <div
-          className="properties-data card-content" //add style class here
+          className="card-content" //add style class here
         >
-          {properties.map((item) => (
-            <div key={item._id} className="media-content">
-              <div className="content">
-                <h2>{item.address}</h2>
-                <p>
-                  {item.city}, {item.state} {item.zip}
-                </p>
-              </div>
-              <Link
-                to={`/property/${item._id}/details`}
-                className="button is-success"
-                id="PmDetailbtn"
-              >
-                View Property Details
+          <div className="media-content">
+            <div className="content">
+              <h2>
+                Hello {user.firstName} {user.lastName}
+              </h2>
+
+              <Link to={`/property/new`} className="button" id="PmDetailbtn">
+                Add Property
               </Link>
             </div>
-          ))}
+          </div>
         </div>
       </div>
+
+      {properties.length ? (
+        <div className="data-box card" id="Pm-properties">
+          <div
+            className="properties-data card-content" //add style class here
+          >
+            {properties.map((item) => (
+              <div key={item._id} className="media-content">
+                <div className="content">
+                  <h2>{item.address}</h2>
+                  <p>
+                    {item.city}, {item.state} {item.zip}
+                  </p>
+                </div>
+                <Link
+                  to={`/property/${item._id}/details`}
+                  className="button is-success"
+                  id="PmDetailbtn"
+                >
+                  Manage Property
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

@@ -1,12 +1,12 @@
 const router = require("express").Router();
-const { Property, User } = require("../../models");
+const { Property, User, Unit } = require("../../models");
 
 // get a list of properties (that belong to the currently logged in user)
 router.get("/", async (req, res) => {
   //const { user_id } = req.session;
   try {
     // get the currently logged in user
-    const user = await User.findOne({ _id: req.session.user_id }).populate(
+    const user = await User.findById(req.session.user_id).populate(
       "properties"
     );
 
@@ -24,10 +24,10 @@ router.get("/", async (req, res) => {
 
 // get a single property by it's ID
 router.get("/:id", async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
   try {
     // get the property by it's id
-    const property = await Property.findOne({ id: _id }).populate("units");
+    const property = await Property.findById(id).populate("units");
 
     // return the property
     res.status(200).json(property);
@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
     const propertyData = await property.save();
 
     // get the currently logged in user
-    const user = await User.findOne({ _id: user_id });
+    const user = await User.findById(user_id);
     const userObj = user.toObject();
 
     // update the list of the user's properties to include the newly created one
@@ -66,12 +66,11 @@ router.post("/", async (req, res) => {
 
 // update a property
 router.put("/:id", async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
   try {
-    await Property.findOneAndUpdate({ id: _id }, req.body);
-    const updatedProperty = await Property.findOne({ id: id });
+    await Property.findOneAndUpdate({ _id: id }, req.body);
 
-    res.status(200).json(updatedProperty);
+    res.status(200).end();
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -80,13 +79,39 @@ router.put("/:id", async (req, res) => {
 
 // delete a property
 router.delete("/:id", async (req, res) => {
-  const { _id } = req.params;
-  console.log(_id);
+  const { id } = req.params;
+  console.log(id);
   try {
     // delete the property by its id
-    await Property.deleteOne({ id: _id });
+    await Property.deleteOne({ _id: id });
 
     res.status(204).json("Property Deleted");
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+
+router.post("/:id/unit", async (req, res) => {
+  try {
+    const { id } = req.params;
+    // create a new property and save it to the database
+    const unit = new Unit(req.body);
+    const unitData = await unit.save();
+    console.log(unitData);
+    // get the currently logged in user
+    const property = await Property.findById(id);
+    const propertyObj = property.toObject();
+
+    // update the list of the user's properties to include the newly created one
+    property.units = [...propertyObj.units, unitData._id];
+
+    // save the updatedUser to the database
+    const updatedProperty = await property.save();
+
+    console.log(updatedProperty);
+
+    res.status(200).json(updatedProperty);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
