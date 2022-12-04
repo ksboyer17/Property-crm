@@ -123,8 +123,8 @@ function PropertyDetails() {
                         Lease:{" "}
                         {new Date(item.tenant_leaseDate).toLocaleDateString(
                           "en-us"
-                        )}
-                        {buildLeaseEndDate(item.tenant_leaseDate)}- {}
+                        )}{" "}
+                        -{buildLeaseEndDate(item.tenant_leaseDate)} {}
                       </p>
                     </>
                   ) : null}

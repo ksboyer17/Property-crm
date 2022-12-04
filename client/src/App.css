@@ -84,6 +84,7 @@ img {
 .input {
   background-color: black;
   color: #d7be69 !important;
+  margin: 0.5rem;
 }
 
 #userInput {
@@ -253,7 +254,6 @@ i {
 #deleteUnit,
 #deleteTenants {
   position: relative;
-  width: 52% !important;
   height: 2.5rem;
   margin-top: 0.5rem;
   border-radius: 20px;

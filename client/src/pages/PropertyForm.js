@@ -80,6 +80,7 @@ const PropertyForm = () => {
             value={formData.address || ""}
             onChange={handleChange}
           ></input>
+          <br></br>
           <input
             className="input add-property"
             style={{ width: "400px" }}
@@ -90,6 +91,7 @@ const PropertyForm = () => {
             value={formData.city || ""}
             onChange={handleChange}
           ></input>
+          <br></br>
           <input
             className="input add-property"
             style={{ width: "400px" }}
@@ -100,6 +102,7 @@ const PropertyForm = () => {
             value={formData.state || ""}
             onChange={handleChange}
           ></input>
+          <br></br>
           <input
             className="input add-property"
             style={{ width: "400px" }}
@@ -110,6 +113,7 @@ const PropertyForm = () => {
             value={formData.zip || ""}
             onChange={handleChange}
           ></input>
+          <br></br>
           {id ? (
             <button id="addTenats" type="submit" onClick={updateProperty}>
               Update property

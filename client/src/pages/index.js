@@ -35,11 +35,7 @@ const PageRouter = () => {
           <Switch>
             <DashboardProvider>
               <Route exact path="/" component={Properties} />
-              <Route
-                exact
-                path="/property/:id/details"
-                component={PropertyDetails}
-              />
+              <Route exact path="/property/:id/details" component={PropertyDetails}/>
               <Route exact path="/property/new" component={PropertyForm} />
               <Route exact path="/property/:id/edit" component={PropertyForm} />
               <Route exact path="/unit/:id/details" component={UnitDetails} />
